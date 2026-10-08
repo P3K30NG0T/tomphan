@@ -1,0 +1,35 @@
+name: Research harness
+# Fetches open data, validates it, recomputes the market study and the model, and publishes data/ for the site.
+# Runs every Monday and on demand (Actions → Research harness → Run workflow).
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * 1"
+permissions:
+  contents: write
+concurrency:
+  group: research-harness
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run harness
+        run: node harness/run.mjs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Publish data
+        if: always()
+        run: |
+          git config user.name "tomphan-harness[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "harness: data refresh (run ${{ github.run_id }})"
+          git pull --rebase origin main
+          git push origin HEAD:main

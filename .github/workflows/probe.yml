@@ -1,7 +1,0 @@
-name: probe
-on: workflow_dispatch
-jobs:
-  probe:
-    runs-on: ubuntu-latest
-    steps:
-      - run: curl -s -o /dev/null -w '%{http_code}\n' https://getdeploying.com/dataset/gpu-prices/nvidia-h100.csv
