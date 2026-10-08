@@ -136,7 +136,7 @@ await step("validate", "Validate the data before using it", "check", "run_checks
     check("sec-match", "CoreWeave FY2025 figures match the values first recorded (no restatement)", !!same, { stepId: "validate", detail: fy25 ? `revenue ${fy25.revenue}, D&A ${fy25.dna}` : "FY2025 missing" });
   }
   const fails = log.checks.filter(c => c.result === "fail").length, warns = log.checks.filter(c => c.result === "warn").length;
-  return { status: fails ? "error" : warns ? "warn" : "ok", summary: `${log.checks.filter(c => c.result === "pass").length} passed, ${warns} warnings, ${fails} blocking failures` };
+  return { status: fails ? "error" : warns ? "warn" : "ok", summary: `${log.checks.filter(c => c.result === "pass").length} passed, ${warns} warning${warns === 1 ? "" : "s"}, ${fails} blocking failure${fails === 1 ? "" : "s"}` };
 });
 
 function onDemand(g) {
@@ -217,7 +217,7 @@ await step("model", "Run the model and cross-check it in Python", "tool", "run_m
   const sc = Object.fromEntries(["bull", "base", "bear"].map(s => { const e = scenario(s); return [s, { label: SCENARIO_LABELS[s], npv: round(e.npv, 0), irr: round(e.irr, 4), payback: round(e.payback, 2), inputs: e.inputs }]; }));
   const t = tornado({});
   results = { base: { npv: round(base.npv, 0), irr: round(base.irr, 4), payback: round(base.payback, 2), breakevenPrice: round(base.breakevenPrice), breakevenCapex: round(base.breakevenCapex, -2), cashCost: round(base.cashCost) }, scenarios: sc, topDrivers: t.bars.slice(0, 3).map(b => ({ driver: b.label, swing: round(b.swing, 0) })) };
-  return { summary: `Base NPV $${results.base.npv} per GPU, IRR ${round(base.irr * 100, 1)}%; Python check differs by $${round(diff, 4)}`, detail: { py: { npv: round(py.npv), irr: round(py.irr, 4) } } };
+  return { summary: `Base NPV ${results.base.npv < 0 ? "−" : ""}$${Math.abs(results.base.npv).toLocaleString("en-US")} per GPU, IRR ${round(base.irr * 100, 1)}%; the Python check differs by $${round(diff, 2)}`, detail: { py: { npv: round(py.npv), irr: round(py.irr, 4) } } };
 });
 
 /* 7. Agent review (needs ANTHROPIC_API_KEY; numbers it writes must exist in the evidence) */

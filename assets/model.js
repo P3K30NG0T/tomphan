@@ -146,9 +146,3 @@ export function lockCapexGrid(input, locks = [0, 1, 2, 3, 4, 5], capexes = [2000
 
 export const CLUSTER = 1000; // GPUs in the illustrative cluster
 
-// Temporary exports for the page version before the restructure; removed together with it.
-export const DEFAULTS = MODEL_DEFAULTS;
-export const SCENARIOS = { bull: { label: "Bull", ...scenarioInputs("bull") }, base: { label: "Base" }, bear: { label: "Bear", ...scenarioInputs("bear") } };
-export function lifePriceGrid(input, lives = [3, 4, 5, 6, 7], prices = [1.75, 2.05, 2.35, 2.65, 2.95, 3.25]) {
-  return lives.map(L => prices.map(pr => evaluate({ ...input, life: L, price: pr }).npv));
-}

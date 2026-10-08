@@ -1,6 +1,16 @@
 // Vercel serverless function: Analyst Copilot (live mode)
 // Needs the ANTHROPIC_API_KEY environment variable set in Vercel. The key never reaches the browser.
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { TOOL_DEFS, runTool } from "../assets/tools.js";
+import { setBase } from "../assets/model.js";
+
+// The latest market data published by the research harness; it also sets the model's base case.
+let market = null;
+try {
+  market = JSON.parse(readFileSync(join(process.cwd(), "data", "market.json"), "utf8"));
+  setBase(Object.fromEntries(Object.entries(market.assumptions || {}).map(([k, v]) => [k, v.value])));
+} catch { market = null; }
 
 const MODEL = process.env.COPILOT_MODEL || "claude-haiku-4-5-20251001";
 const PER_IP_PER_HOUR = Number(process.env.COPILOT_PER_IP_HOUR || 8);
@@ -8,9 +18,9 @@ const DAILY_CAP = Number(process.env.COPILOT_DAILY_CAP || 300);
 const MAX_QUESTION = 300;
 
 const SYSTEM = `You are Analyst Copilot on the portfolio of Tom Phan (Phan Nguyen Hong Quang), a business planning analyst.
-You answer questions about two projects only:
-1. An H100 GPU rental unit-economics model (NPV, IRR, payback, sensitivity, CoreWeave benchmarks).
-2. A strategy memo on paid channels and payment routes for a hypothetical Southeast Asian messaging app.
+You answer questions about one case only: is buying AI GPUs (H100) to rent out a good business, and for whom?
+It has a market study (rents by GPU model, the price ladder, contract prices, CoreWeave benchmarks, Southeast Asia capacity)
+and a financial model of one H100 (NPV, IRR, payback, break-even rent and capex, scenarios, sensitivity).
 Rules:
 - Every number you state must come from a tool result in this conversation. Never estimate or recall figures.
 - Translate the question into tool inputs. State the assumptions you changed.
@@ -66,7 +76,7 @@ export default async function handler(req, res) {
       if (texts) steps.push({ type: "plan", text: texts });
       messages.push({ role: "assistant", content: out.content });
       const results = uses.map(u => {
-        const result = runTool(u.name, u.input || {});
+        const result = runTool(u.name, u.input || {}, { market });
         steps.push({ type: "tool", name: u.name, args: u.input || {}, result });
         return { type: "tool_result", tool_use_id: u.id, content: JSON.stringify(result) };
       });

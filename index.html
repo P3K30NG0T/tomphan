@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>tomphan. Portfolio</title>
-<meta name="description" content="Tom Phan (Phan Nguyen Hong Quang): business planning and strategy analysis. Interactive projects on GPU rental economics, paid-content strategy and an AI analyst copilot.">
+<meta name="description" content="Tom Phan (Phan Nguyen Hong Quang): business planning and strategy analysis. One case on open data: is buying AI GPUs to rent out still a good business, and for whom?">
 <meta name="theme-color" content="#0b7268">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tom Phan · Business planning and strategy analysis">
-<meta property="og:description" content="Three interactive projects on public data: an H100 GPU valuation model, a paid-content strategy memo, and an AI analyst copilot.">
-<meta property="og:image" content="https://tomphan.vercel.app/assets/og.png">
+<meta property="og:description" content="One business question, answered on open data: market research, a financial model with recommendations by perspective, and the AI agent harness behind both.">
+<meta property="og:image" content="https://tomphann.vercel.app/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b7268'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,sans-serif' font-size='36' font-weight='700' fill='%23fff'%3Et.%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,16 +24,16 @@
     <a class="brand" href="#home">tomphan<span>.</span></a>
     <nav class="nav-links" aria-label="Main">
       <a href="#home" data-nav="home">Home</a>
-      <a href="#gpu" data-nav="gpu">GPU model</a>
-      <a href="#memo" data-nav="memo">Memo</a>
+      <a href="#research" data-nav="research">Market research</a>
+      <a href="#model" data-nav="model">Financial evaluation</a>
       <a href="resume.pdf" target="_blank" rel="noopener" data-resume hidden>Résumé</a>
-      <a href="#copilot" data-nav="copilot" class="cta keep">Try the copilot</a>
+      <a href="#agent" data-nav="agent" class="cta keep">Agent harness</a>
     </nav>
   </div>
 </header>
 
 <main>
-<!-- ============ HOME ============ -->
+<!-- ================= HOME ================= -->
 <div class="view" id="view-home">
   <div class="wrap">
     <div class="hero">
@@ -42,67 +42,69 @@
         <div class="eyebrow">Business planning · Strategy analysis</div>
         <h1>Tom Phan</h1>
         <div class="full">Phan Nguyen Hong Quang · Ho Chi Minh City</div>
-        <p class="lede">I build business plans and the analysis behind them. For four years I have planned revenue for a 28-supermarket retail region. These projects show how I approach strategy questions in technology and AI.</p>
+        <p class="lede">I build business plans and the analysis behind them. For four years I have planned revenue for a 28-supermarket retail region. This site shows how I take a business question from open market data to a decision.</p>
         <div class="stats">
           <div class="stat"><b>4+ yrs</b><span>business planning in multi-format retail</span></div>
           <div class="stat"><b>~VND 2,000bn</b><span>annual regional revenue plan</span></div>
           <div class="stat"><b>Top 15</b><span>data analytics competition, 2022</span></div>
         </div>
         <div class="btns">
-          <a class="btn primary" href="#work" data-scroll="work">View projects</a>
-          <a class="btn" href="#copilot">Ask my analyst copilot</a>
+          <a class="btn primary" href="#work" data-scroll="work">See the case</a>
+          <a class="btn" href="#agent">Ask the research agent</a>
           <a class="btn" href="resume.pdf" target="_blank" rel="noopener" data-resume hidden>Résumé (PDF)</a>
         </div>
       </div>
     </div>
 
-    <div class="flow" aria-label="How the projects connect">
-      <div class="flow-row">
-        <div class="node"><span class="k">Source</span><b>Public data</b><small>SEC filings via XBRL, GPU rental indices, EIA power prices, press disclosures</small></div>
-        <div class="node"><span class="k">Model</span><b>Unit economics</b><small>NPV, IRR, payback, scenarios and sensitivity, in JavaScript and Excel</small></div>
-        <div class="node hot"><span class="k">Agent</span><b>Analyst copilot</b><small>An AI agent that calls the model's functions, so it cannot invent numbers</small></div>
-        <div class="node"><span class="k">Output</span><b>Strategy memo</b><small>A recommendation with the trade-offs, risks and next steps</small></div>
+    <div class="question" aria-label="The case on this site">
+      <span class="eyebrow">The case on this site</span>
+      <p class="q">Is buying AI GPUs to rent out still a good business, and for whom?</p>
+      <div class="q-answers" id="q-answers">
+        <div><b>Rents are rising</b><span>Loading market data…</span></div>
+        <div><b>Each GPU ages fast</b><span>&nbsp;</span></div>
+        <div><b>Buying today</b><span>&nbsp;</span></div>
       </div>
-      <p class="flow-cap">How the three projects connect: the same calculations feed the charts, the downloadable model and the copilot's answers.</p>
     </div>
   </div>
 
   <section class="block" id="work">
     <div class="wrap">
-      <div class="sec-head"><span class="eyebrow">01 · Selected work</span><h2>Three projects built on public data</h2>
-        <p class="muted prose">Each project is an independent analysis that anyone can check against its sources. None uses data from my employer.</p></div>
+      <div class="sec-head"><span class="eyebrow">01 · Selected work</span><h2>One question, three steps</h2>
+        <p class="muted prose">Research sets up the question, the model answers it, and an agent harness did the legwork for both. Every figure comes from open data that anyone can check.</p></div>
 
-      <a class="card feature" href="#copilot">
-        <div class="txt">
-          <span class="pill">Interactive · try it</span>
-          <h3>Analyst Copilot</h3>
-          <p class="muted">Ask a question in plain English or Vietnamese. The agent turns it into model inputs, runs the calculation, and writes a short answer with the numbers it got back. Every step is shown.</p>
-          <div class="tags"><span class="tag">Tool-calling agent</span><span class="tag">Claude API</span><span class="tag">Vercel function</span></div>
-          <div class="metrics"><div><b>5</b><span>tools it can call</span></div><div><b>0</b><span>numbers from memory</span></div><div><b>4</b><span>sample questions</span></div></div>
-        </div>
-        <div class="demo" aria-hidden="true">
-          <div class="mini-step"><span class="k">Question</span>If GPUs only last 4 years, does the cluster still clear 11%?</div>
-          <div class="mini-step"><span class="k">Tool call</span><span class="mono">run_model({ life: 4, decline: 0.20 })</span></div>
-          <div class="mini-step"><span class="k">Answer</span>No. NPV turns negative and IRR drops below the cost of capital.</div>
-        </div>
-      </a>
-
-      <div class="grid-2" style="margin-top:16px">
-        <a class="card" href="#gpu">
-          <span class="eyebrow">Financial evaluation</span>
-          <h3>What is an H100 really worth?</h3>
-          <p class="muted">NPV and IRR of renting out one H100 GPU, tested against CoreWeave's filings and the debate over how long GPUs stay useful.</p>
-          <div class="tags"><span class="tag">NPV / IRR</span><span class="tag">Scenarios</span><span class="tag">Tornado</span><span class="tag">Excel</span></div>
-          <div class="metrics"><div><b data-k="home-npv">+$318</b><span>base NPV per GPU</span></div><div><b data-k="home-be">$2.33</b><span>break-even $/hr</span></div><div><b>7</b><span>drivers tested</span></div></div>
+      <div class="steps-2">
+        <a class="card step-card" href="#research">
+          <span class="eyebrow">Step 1 · Market research</span>
+          <h3>A boom with a clock on it</h3>
+          <p class="muted">Where rents are going, how fast a GPU loses value, what buyers really pay, and where Southeast Asia fits.</p>
+          <div class="metrics" id="home-research-metrics"><div><b>…</b><span>&nbsp;</span></div></div>
         </a>
-        <a class="card" href="#memo">
-          <span class="eyebrow">Market research · Memo</span>
-          <h3>Paid channels without the 30% toll</h3>
-          <p class="muted">A two-page memo on launching paid content in a Southeast Asian messaging app, using Telegram as the case study and a calculator for payment routes.</p>
-          <div class="tags"><span class="tag">Market research</span><span class="tag">Unit economics</span><span class="tag">Memo writing</span></div>
-          <div class="metrics"><div><b>30% → 10%</b><span>payment cost, base mix</span></div><div><b>8</b><span>sourced data points</span></div></div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <a class="card step-card" href="#model">
+          <span class="eyebrow">Step 2 · Financial evaluation</span>
+          <h3>Should you buy an H100 today?</h3>
+          <p class="muted">NPV, IRR, break-even rent and capex, scenarios, sensitivity, and a recommendation for each type of player.</p>
+          <div class="metrics" id="home-model-metrics"><div><b>…</b><span>&nbsp;</span></div></div>
         </a>
       </div>
+
+      <div class="support-rail" aria-hidden="true"><span>feeds data and checks into both steps</span></div>
+
+      <a class="card feature" href="#agent">
+        <div class="txt">
+          <span class="pill">Step 3 · Agent harness · try it</span>
+          <h3>The agent that did the legwork</h3>
+          <p class="muted">An AI agent fetched the open data, checked it, computed the market statistics and ran the model, inside a harness I designed so it cannot publish an unchecked or invented number. It reruns every week. You can ask it questions.</p>
+          <ul class="ticks">
+            <li>Tools for every step, from data download to the NPV model</li>
+            <li>Blocking checks before anything reaches this site</li>
+            <li>Every figure traceable to a source file and its fingerprint</li>
+          </ul>
+        </div>
+        <div class="demo" id="home-run">
+          <div class="mini-step"><span class="k">Latest run</span>Loading the run log…</div>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -113,7 +115,7 @@
         <div class="card"><h4>Business planning</h4><p class="muted" style="margin-top:6px">Annual and monthly revenue plans built bottom-up by store, inside a Balanced Scorecard.</p></div>
         <div class="card"><h4>Performance reviews</h4><p class="muted" style="margin-top:6px">Monthly, mid-year and annual reviews for the Board of Management, with findings and proposals.</p></div>
         <div class="card"><h4>Market intelligence</h4><p class="muted" style="margin-top:6px">Tracking competitors, consumer trends, macro data and policy, and flagging risks early.</p></div>
-        <div class="card"><h4>Financial evaluation</h4><p class="muted" style="margin-top:6px">Unit economics, promotion elasticity, and now NPV, IRR and sensitivity for investment cases.</p></div>
+        <div class="card"><h4>Financial evaluation</h4><p class="muted" style="margin-top:6px">Unit economics, promotion elasticity, and NPV, IRR and sensitivity for investment cases.</p></div>
       </div>
     </div>
   </section>
@@ -123,13 +125,13 @@
       <div class="sec-head"><span class="eyebrow">03 · Skills & tooling</span><h2>The tools I reach for</h2><p class="muted">Pick a skill to see where it is used.</p></div>
       <div class="grid-3">
         <div class="card"><h4>Strategy & research</h4>
-          <div class="skill-list"><a href="#memo">Market research <span>→</span></a><a href="#memo">Competitive analysis <span>→</span></a><a href="#memo">Strategy memos <span>→</span></a></div>
-          <div class="tags" style="margin-top:12px"><span class="tag">Desk research</span><span class="tag">Market sizing</span><span class="tag">EN / VI writing</span></div></div>
+          <div class="skill-list"><a href="#research">Market research <span>→</span></a><a href="#ex-price">Pricing & competitive analysis <span>→</span></a><a href="#rec">Recommendations by perspective <span>→</span></a></div>
+          <div class="tags" style="margin-top:12px"><span class="tag">Desk research</span><span class="tag">Value chain</span><span class="tag">EN / VI</span></div></div>
         <div class="card"><h4>Finance & modeling</h4>
-          <div class="skill-list"><a href="#gpu">NPV / IRR / payback <span>→</span></a><a href="#gpu">Scenario & sensitivity <span>→</span></a><a href="#gpu">Benchmarking filings <span>→</span></a></div>
+          <div class="skill-list"><a href="#model">NPV / IRR / payback <span>→</span></a><a href="#ex-tornado">Scenario & sensitivity <span>→</span></a><a href="#ex-buyers">Benchmarking filings <span>→</span></a></div>
           <div class="tags" style="margin-top:12px"><span class="tag">Excel</span><span class="tag">Balanced Scorecard</span><span class="tag">Unit economics</span></div></div>
         <div class="card"><h4>Data & automation</h4>
-          <div class="skill-list"><a href="#copilot">AI agents with tools <span>→</span></a><a href="#gpu">Interactive charts <span>→</span></a><a href="#copilot">Guardrails & cost limits <span>→</span></a></div>
+          <div class="skill-list"><a href="#agent">AI agent harness <span>→</span></a><a href="#run-log">Data checks & audit trail <span>→</span></a><a href="#ex-trend">Interactive charts <span>→</span></a></div>
           <div class="tags" style="margin-top:12px"><span class="tag">Excel VBA</span><span class="tag">Power BI</span><span class="tag">JavaScript</span></div></div>
       </div>
     </div>
@@ -152,15 +154,93 @@
   </section>
 </div>
 
-<!-- ============ GPU ============ -->
-<div class="view" id="view-gpu" hidden>
+<!-- ================= MARKET RESEARCH ================= -->
+<div class="view" id="view-research" hidden>
   <div class="wrap">
     <div class="p-head">
-      <a class="back" href="#home">← All projects</a>
-      <span class="eyebrow">Financial evaluation · H100 rental</span>
-      <h1>What is an H100 really worth?</h1>
-      <p class="prose muted">A GPU cloud buys an H100 for tens of thousands of dollars and rents it by the hour. Whether that earns its cost of capital depends on three things investors argue about: rental prices, how busy the GPU stays, and how many years it stays useful. CoreWeave depreciates GPUs over six years. Critics such as Michael Burry argue the economic life is two to three.</p>
-      <p class="disclaimer">Independent analysis on public data. Illustrative, not investment advice. <span class="as-of">Data as of 7 Oct 2026.</span></p>
+      <a class="back" href="#home">← The case</a>
+      <span class="eyebrow">Step 1 of 3 · Market research</span>
+      <h1>Renting out AI GPUs: a boom with a clock on it</h1>
+      <p class="prose muted">GPU clouds buy chips for tens of thousands of dollars and rent them by the hour. Before asking whether that pays, this step looks at where rents are, how fast they fall, what buyers really pay, who the buyers are, and where Southeast Asia fits.</p>
+      <p class="disclaimer">Global market, with a Southeast Asia lens. <span id="research-asof" class="as-of"></span></p>
+    </div>
+
+    <div class="findings" id="findings" aria-live="polite"></div>
+
+    <article class="exhibit" id="ex-trend">
+      <span class="ex-no">Exhibit 1 · Demand</span>
+      <h2 id="ex1-title">Rents are still rising</h2>
+      <p class="ex-sub">Median on-demand rent across providers, USD per GPU-hour, 4-week rolling average. Hover for values.</p>
+      <div class="chart" id="ch-trend"></div>
+      <p class="sowhat" id="ex1-so"></p>
+      <details class="data-table"><summary>Show the numbers</summary><div class="table-wrap"><table id="tb-trend"></table></div></details>
+      <p class="src" id="ex1-src"></p>
+    </article>
+
+    <article class="exhibit" id="ex-ladder">
+      <span class="ex-no">Exhibit 2 · Obsolescence</span>
+      <h2 id="ex2-title">Yet each GPU loses rent every year it ages</h2>
+      <p class="ex-sub">Today's on-demand rent for each GPU model against years since it reached volume in clouds. Log scale: a straight line means a constant yearly rate.</p>
+      <div class="chart" id="ch-ladder"></div>
+      <p class="sowhat" id="ex2-so"></p>
+      <p class="src" id="ex2-src"></p>
+    </article>
+
+    <article class="exhibit" id="ex-price">
+      <span class="ex-no">Exhibit 3 · Pricing</span>
+      <h2 id="ex3-title">List prices are not what volume buyers pay</h2>
+      <p class="ex-sub">H100 rent by how it is bought, USD per GPU-hour. The highlighted bar is where the model starts.</p>
+      <div class="chart" id="ch-price"></div>
+      <p class="sowhat" id="ex3-so"></p>
+      <p class="src" id="ex3-src"></p>
+    </article>
+
+    <article class="exhibit" id="ex-buyers">
+      <span class="ex-no">Exhibit 4 · Buyers and contracts</span>
+      <h2>The business runs on long contracts with very few buyers</h2>
+      <p class="ex-sub">CoreWeave, the largest listed GPU cloud. Revenue in USD millions; facts from its FY2025 annual report.</p>
+      <div class="ex-split">
+        <div class="chart" id="ch-cw"></div>
+        <div class="tiles" id="cw-tiles"></div>
+      </div>
+      <p class="sowhat" id="ex4-so"></p>
+      <p class="src" id="ex4-src"></p>
+    </article>
+
+    <article class="exhibit" id="ex-sea">
+      <span class="ex-no">Exhibit 5 · Southeast Asia lens</span>
+      <h2 id="ex5-title">Southeast Asia is adding capacity fast, so cheap power will not be the edge</h2>
+      <p class="ex-sub">Data centre development pipeline by market, MW, H1 2026.</p>
+      <div class="chart" id="ch-sea"></div>
+      <p class="sowhat" id="ex5-so"></p>
+      <p class="src" id="ex5-src"></p>
+    </article>
+
+    <section class="bridge">
+      <span class="eyebrow">What the model has to answer</span>
+      <h2>Value of one GPU = rent it earns − what it costs, over its useful life</h2>
+      <div class="tree" id="driver-tree"></div>
+      <a class="btn primary" href="#model">Step 2: run the numbers →</a>
+    </section>
+
+    <details class="method"><summary>Method and sources</summary>
+      <div class="prose">
+        <p>The research agent downloads the GetDeploying GPU price dataset (CC BY 4.0) for five NVIDIA models every week, checks it, and computes each model's latest rent (average of the last four complete weeks), its change over the year, contract-term prices and the price ladder. The ladder is a least-squares fit of log rent against years since volume availability. CoreWeave figures come from SEC filings; other figures are cited where they appear.</p>
+      </div>
+      <ul class="sources" id="research-sources"></ul>
+    </details>
+  </div>
+</div>
+
+<!-- ================= FINANCIAL EVALUATION ================= -->
+<div class="view" id="view-model" hidden>
+  <div class="wrap">
+    <div class="p-head">
+      <a class="back" href="#research">← Step 1: Market research</a>
+      <span class="eyebrow">Step 2 of 3 · Financial evaluation</span>
+      <h1>Should you buy an H100 today to rent it out?</h1>
+      <p class="prose muted" id="model-lead">One H100, bought today and rented out over its life. The base case uses the research: the rent a volume buyer pays, falling at the rate measured on the price ladder.</p>
+      <p class="disclaimer">Independent analysis on open data. Illustrative, not investment advice.</p>
     </div>
 
     <div class="answer-box" id="gpu-answer">Loading the model…</div>
@@ -170,7 +250,8 @@
       <div class="kpi"><span>NPV, 1,000-GPU cluster</span><b id="k-npvc">–</b></div>
       <div class="kpi"><span>IRR</span><b id="k-irr">–</b></div>
       <div class="kpi"><span>Payback</span><b id="k-pay">–</b></div>
-      <div class="kpi"><span>Break-even price</span><b id="k-be">–</b></div>
+      <div class="kpi"><span>Break-even rent</span><b id="k-be">–</b></div>
+      <div class="kpi"><span>Max capex to break even</span><b id="k-bec">–</b></div>
     </div>
 
     <div class="workbench" style="margin-top:20px">
@@ -180,169 +261,136 @@
             <button type="button" data-sc="bull" aria-pressed="false">Bull</button>
             <button type="button" data-sc="base" aria-pressed="true">Base</button>
             <button type="button" data-sc="bear" aria-pressed="false">Bear</button>
-          </div></div>
+          </div>
+          <small class="muted" id="sc-desc" style="display:block;margin-top:6px;font-size:12px"></small></div>
         <div id="sliders"></div>
         <button type="button" class="btn" id="gpu-reset">Reset to base case</button>
         <a class="btn" href="downloads/tomphan-h100-model.xlsx" download>Download Excel model</a>
       </form>
 
       <div class="panels">
+        <div class="card"><h3 style="font-size:17px">Where the base case comes from</h3><div class="table-wrap" style="margin-top:8px"><table id="evidence"></table></div></div>
         <div class="card chart-card"><h3>Cash flow per GPU, by year</h3><p class="sub">Year 0 is the purchase. The line is cumulative cash flow; payback is where it crosses zero.</p><div class="chart" id="ch-fcf"></div></div>
-        <div class="card chart-card"><h3>What moves the answer</h3><p class="sub">NPV per GPU when one assumption changes and the rest stay at the current case.</p><div class="chart" id="ch-tornado"></div></div>
-        <div class="card chart-card"><h3>Economic life × rental price</h3><p class="sub">NPV per GPU in $ thousands. Green cells earn more than the cost of capital.</p><div class="chart" id="ch-grid"></div></div>
-        <div class="callout warn" id="acct-callout"></div>
+        <div class="card chart-card" id="ex-tornado"><h3>What moves the answer</h3><p class="sub">NPV per GPU when one assumption changes and the rest stay at the current case.</p><div class="chart" id="ch-tornado"></div></div>
+        <div class="card chart-card"><h3>The two levers a buyer controls</h3><p class="sub">NPV per GPU, $ thousands, by how many years the rent is locked by contract and what you pay per GPU. Blue earns more than the cost of capital.</p><div class="chart" id="ch-grid"></div></div>
+        <div class="callout" id="acct-callout"></div>
       </div>
     </div>
 
-    <section class="block" style="margin-top:40px">
-      <div class="sec-head"><span class="eyebrow">Reality check</span><h2>How CoreWeave's filings compare</h2>
-        <p class="muted prose">CoreWeave is the largest listed GPU cloud. Its depreciation runs at roughly half of revenue, close to what the model implies, and it spends far more on capex than it earns in revenue while it grows.</p></div>
-      <div class="grid-2">
-        <div class="card chart-card"><h3>Depreciation and operating margin, % of revenue</h3><p class="sub">FY = calendar year. H1 2026 = Jan–Jun 2026.</p><div class="chart" id="ch-cw"></div></div>
-        <div class="card"><h3 style="font-size:17px">Key facts from the FY2025 10-K</h3><div class="table-wrap" style="margin-top:10px"><table id="cw-facts"></table></div></div>
+    <section class="block rec" id="rec">
+      <div class="sec-head"><span class="eyebrow">Recommendation</span><h2>The right move depends on who you are</h2>
+        <p class="muted prose">There is no single client here, so the advice is split by the position a reader might be in. It follows the assumptions above: change them and it updates.</p></div>
+      <div class="rec-tabs" role="tablist" id="rec-tabs"></div>
+      <div class="rec-body" id="rec-body" role="tabpanel"></div>
+    </section>
+
+    <details class="method"><summary>How the model works</summary>
+      <div class="prose">
+        <ol>
+          <li>Rent: the year-1 rate holds while a contract locks it; after that, rent follows the market curve for a GPU of that age (year-1 rent × (1 − decline) per year).</li>
+          <li>Revenue = rent × 8,760 hours × utilization. Costs = power (kW × hours × utilization × $/kWh) plus other opex per available hour.</li>
+          <li>Depreciation is straight-line over the economic life; tax is 21% of EBIT, and a loss creates a tax shield used by the wider business.</li>
+          <li>Free cash flow = EBITDA − tax, plus resale value in the final year. NPV discounts at the cost of capital; IRR, break-even rent and break-even capex are solved by bisection.</li>
+          <li>The harness re-runs the base case in a separate Python implementation every week and blocks publishing if the two differ by more than $1.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ================= AGENT HARNESS ================= -->
+<div class="view" id="view-agent" hidden>
+  <div class="wrap">
+    <div class="p-head">
+      <a class="back" href="#model">← Step 2: Financial evaluation</a>
+      <span class="eyebrow">Step 3 of 3 · Agent harness</span>
+      <h1>The harness behind the case</h1>
+      <p class="prose muted">An AI agent did the legwork for steps 1 and 2: download, check, compute, cross-check. The harness is everything around it: the tools it may call, the checks it must pass, the record it keeps, and the calls a person makes. It runs every Monday on GitHub; anyone can read its code and rerun it.</p>
+    </div>
+
+    <section class="harness" aria-label="How the harness is built">
+      <div class="h-col">
+        <span class="h-k">Open sources</span>
+        <div class="h-box">GetDeploying GPU prices<small>5 models, weekly, CC BY 4.0</small></div>
+        <div class="h-box">SEC filings<small>CoreWeave XBRL facts</small></div>
+        <div class="h-box">Cited reports<small>Contract index, power, SEA pipeline</small></div>
+      </div>
+      <div class="h-col h-core">
+        <span class="h-k">Agent + tools</span>
+        <ol class="h-tools" id="h-tools"></ol>
+      </div>
+      <div class="h-col">
+        <span class="h-k">Guardrails</span>
+        <div class="h-box guard">Blocking checks<small>Bad data never reaches the site</small></div>
+        <div class="h-box guard">Number grounding<small>Agent text may only use numbers from the evidence</small></div>
+        <div class="h-box guard">Two implementations<small>JavaScript and Python must agree</small></div>
+        <div class="h-box human">Human calls<small>Capex, utilization, life, cost of capital</small></div>
+      </div>
+      <div class="h-col">
+        <span class="h-k">Outputs</span>
+        <div class="h-box out"><a href="#research">Market research</a><small>data/market.json</small></div>
+        <div class="h-box out"><a href="#model">Financial model</a><small>Base case + checks</small></div>
+        <div class="h-box out"><a href="#run-log">Run log</a><small>Every step, check and source</small></div>
+      </div>
+    </section>
+
+    <section class="block" id="run-log">
+      <div class="sec-head"><span class="eyebrow">Latest run</span><h2 id="run-title">What the agent did last time</h2><p class="muted" id="run-meta"></p></div>
+      <div class="run-grid">
+        <div>
+          <div class="run-head"><span class="eyebrow">Steps</span><button class="btn" type="button" id="replay">Replay the run</button></div>
+          <ol class="timeline run" id="run-steps"></ol>
+        </div>
+        <div>
+          <span class="eyebrow">Checks</span>
+          <ul class="checks" id="run-checks"></ul>
+          <span class="eyebrow" style="display:block;margin-top:18px">Sources used</span>
+          <div class="table-wrap"><table id="run-sources"></table></div>
+          <span class="eyebrow" style="display:block;margin-top:18px">Run history</span>
+          <ul class="runs" id="run-history"></ul>
+        </div>
       </div>
     </section>
 
     <section class="block">
-      <div class="sec-head"><span class="eyebrow">Method</span><h2>How the model works</h2></div>
-      <div class="grid-2">
-        <div class="prose">
-          <ol>
-            <li>Revenue per year = price × 8,760 hours × utilization. Price falls by the decline rate each year.</li>
-            <li>Costs = power (kW × hours × utilization × $/kWh) plus other opex per available hour.</li>
-            <li>Depreciation runs straight-line over the economic life. Tax is 21% of EBIT; a loss creates a tax shield used by the wider company.</li>
-            <li>Free cash flow = EBITDA − tax, plus resale value in the final year. NPV discounts at the WACC; IRR is solved by bisection.</li>
-            <li>The JavaScript, a separate Python script and the Excel file all give the same base-case NPV.</li>
-          </ol>
-        </div>
-        <div class="table-wrap"><table id="assumptions"></table></div>
+      <div class="sec-head"><span class="eyebrow">Design choices</span><h2>Why you can trust what it produces</h2></div>
+      <div class="grid-4">
+        <div class="card"><h4>Numbers only from tools</h4><p class="muted" style="margin-top:6px">The agent never does arithmetic in its head. It calls a tool, and its text is checked: any number not in the evidence is rejected.</p></div>
+        <div class="card"><h4>Every figure traceable</h4><p class="muted" style="margin-top:6px">Each source file is stored with its size and fingerprint, so a figure on this site can be traced to the exact file it came from.</p></div>
+        <div class="card"><h4>Stop, don't guess</h4><p class="muted" style="margin-top:6px">If a blocking check fails, nothing is published and the site keeps the last good data. If a source is down, it says so and falls back to a recorded copy.</p></div>
+        <div class="card"><h4>People make the judgement calls</h4><p class="muted" style="margin-top:6px">Assumptions with no open data behind them are marked as analyst inputs and tested in the sensitivity analysis, not hidden.</p></div>
       </div>
-      <h3 style="margin-top:28px;font-size:17px">Sources</h3>
-      <ul class="sources" id="gpu-sources"></ul>
     </section>
-  </div>
-</div>
 
-<!-- ============ MEMO ============ -->
-<div class="view" id="view-memo" hidden>
-  <div class="wrap">
-    <div class="p-head">
-      <a class="back" href="#home">← All projects</a>
-      <span class="eyebrow">Market research · Strategy memo</span>
-      <h1>Paid channels without the 30% toll</h1>
-      <p class="disclaimer">Written for a hypothetical Southeast Asian messaging app with 70 million monthly users. Telegram figures come from public reporting and are graded by reliability below. <span class="as-of">As of 7 Oct 2026.</span></p>
-    </div>
-
-    <article class="memo">
-      <dl class="memo-meta">
-        <dt>To</dt><dd>Head of Strategy</dd>
-        <dt>From</dt><dd>Tom Phan, Strategy Analyst</dd>
-        <dt>Date</dt><dd>7 October 2026</dd>
-        <dt>Re</dt><dd>Launching paid channels: which payment route?</dd>
-      </dl>
-
-      <div class="prose">
-        <h2>1. Recommendation</h2>
-        <p>Launch paid channels and paid posts in two phases, and route as many payments as possible outside app stores.</p>
-        <ul>
-          <li><b>Phase 1 (months 0–6):</b> Android and web first, paid through local e-wallets and bank QR at about 1.5%. On iOS, offer in-app purchase so the feature works everywhere.</li>
-          <li><b>Phase 2:</b> an in-app credit that creators can spend on promoting their channels, so fewer credits are cashed out after an app-store fee.</li>
-          <li><b>Not now:</b> crypto rails. Keep them optional where they are clearly legal.</li>
-        </ul>
-        <p id="memo-headline">At the base assumptions, fans would spend about $3.15M a month. A mixed route costs 10% in payment fees instead of 30%, leaving about $0.63M more each month for creators and the platform.</p>
-
-        <h2>2. What Telegram shows</h2>
-        <ul>
-          <li><b>Payers are few.</b> Premium reached 15 million subscribers, only about 1–1.5% of a billion users. Plan for low conversion and high value per payer.</li>
-          <li><b>Telegram did not avoid app stores.</b> Stars are bought through in-app purchase and Apple and Google keep 30%. Telegram lowered the effective cost by subsidizing ads bought with Stars, and by letting crypto users top up through Fragment.</li>
-          <li><b>Hype fades.</b> Mini App reach peaked at 1.44 billion in September 2024 and settled at 150–190 million by mid-2025. Useful apps stayed; tap-to-earn games did not.</li>
-        </ul>
-        <div class="table-wrap" style="margin-top:12px"><table id="tg-table"></table></div>
-      </div>
-
-      <div class="prose"><h2>3. The economics</h2>
-        <p>Change the inputs to see how the payment route splits each fan's dollar. The share of payments that start on iOS is the input to replace first with the app's own data.</p></div>
-      <div class="calc">
-        <form class="controls" id="memo-form" onsubmit="return false" style="position:static"></form>
-        <div class="panels">
-          <div class="kpis" style="grid-template-columns:repeat(3,minmax(0,1fr))">
-            <div class="kpi"><span>Fan spending / month</span><b id="m-gross">–</b></div>
-            <div class="kpi"><span>Payment fees</span><b id="m-fee">–</b></div>
-            <div class="kpi"><span>Platform revenue / year</span><b id="m-plat">–</b></div>
-          </div>
-          <div class="card chart-card"><h3>Where each dollar goes</h3><p class="sub">Your mix compared with routing every payment through app stores, and with avoiding them entirely.</p><div class="chart" id="ch-routes"></div></div>
+    <section class="block" id="ask">
+      <div class="sec-head"><span class="eyebrow">Try it</span><h2>Ask the agent about the case</h2>
+        <p class="prose muted">It answers with the same tools the harness uses: it picks a tool, sets the inputs, runs the calculation, and only then writes the answer. Every step is shown.</p></div>
+      <div class="cp">
+        <div class="cp-ask">
+          <form class="cp-form" id="cp-form">
+            <label for="cp-q" hidden>Question</label>
+            <input id="cp-q" maxlength="300" placeholder="e.g. What if rents fall 30% a year?" autocomplete="off">
+            <button class="btn primary" type="submit">Ask</button>
+          </form>
+          <div class="mode" id="cp-mode"><span class="pill" id="cp-pill">Checking live mode…</span></div>
+          <div><span class="eyebrow">Sample questions</span><div class="qs" id="cp-samples"></div></div>
+        </div>
+        <div>
+          <div class="timeline" id="cp-steps"><div class="empty">Pick a sample question or type your own. Each step the agent takes will appear here.</div></div>
+          <div class="card chart-card" id="cp-chart-card" hidden style="margin-top:12px"><h3 id="cp-chart-title">Chart</h3><div class="chart" id="cp-chart"></div></div>
         </div>
       </div>
-
-      <div class="prose">
-        <h2>4. App-store rules</h2>
-        <ul>
-          <li>In most markets, Apple and Google require their own billing for digital goods sold inside an app.</li>
-          <li>In the US, a court barred Apple in April 2025 from charging commission on purchases made through a link to the web. The appeals court has since sent the question of a fair commission back to the trial court, and Apple has taken the case to the Supreme Court. This is unsettled and US-only; do not plan on it for Southeast Asia.</li>
-          <li>The larger lever in our markets is where a payment starts: Android and web sales avoid most of the fee.</li>
-        </ul>
-
-        <h2>5. Risks</h2>
-        <ul>
-          <li><b>Creator supply:</b> paid content needs creators with loyal audiences. Start with verified creators in education, market news and entertainment.</li>
-          <li><b>Store policy:</b> a payment link that breaks store rules can get the app pulled. Each market needs legal review before launch.</li>
-          <li><b>Fraud and refunds:</b> wallet payments need refund rules, and creator payouts need identity checks.</li>
-          <li><b>Moderation:</b> content behind a paywall is harder to review.</li>
-        </ul>
-
-        <h2>6. Next 90 days</h2>
-        <ol>
-          <li>Pull the real split of paying actions by operating system from app analytics.</li>
-          <li>Pilot with 200 creators in one market. Track conversion of followers to payers, revenue per payer and refund rate.</li>
-          <li>Negotiate e-wallet rates, targeting 1.5% or less.</li>
-          <li>Go to Phase 2 if at least 1% of a channel's followers pay and refunds stay under 2%. These thresholds are starting points to test.</li>
-        </ol>
-      </div>
-      <h3 style="margin-top:24px;font-size:16px">Sources</h3>
-      <ul class="sources" id="memo-sources"></ul>
-    </article>
-  </div>
-</div>
-
-<!-- ============ COPILOT ============ -->
-<div class="view" id="view-copilot" hidden>
-  <div class="wrap">
-    <div class="p-head">
-      <a class="back" href="#home">← All projects</a>
-      <span class="eyebrow">AI · Tool-calling agent</span>
-      <h1>Analyst Copilot</h1>
-      <p class="prose muted">Ask about the GPU model or the paid-channel memo. The copilot does not answer from memory. It picks a tool, sets the inputs, runs the same functions behind the charts, and only then writes its answer.</p>
-    </div>
-    <div class="cp">
-      <div class="cp-ask">
-        <form class="cp-form" id="cp-form">
-          <label for="cp-q" class="sr" hidden>Question</label>
-          <input id="cp-q" maxlength="300" placeholder="e.g. What if utilization is only 70%?" autocomplete="off">
-          <button class="btn primary" type="submit">Ask</button>
-        </form>
-        <div class="mode" id="cp-mode"><span class="pill" id="cp-pill">Checking live mode…</span></div>
-        <div><span class="eyebrow">Sample questions</span><div class="qs" id="cp-samples"></div></div>
-        <div class="card" style="margin-top:6px"><h4>How it works</h4>
-          <ol class="muted" style="font-size:14px;padding-left:18px;margin:8px 0 0">
-            <li>The question goes to a Vercel function. The API key stays on the server.</li>
-            <li>The model can call five tools: run_model, sensitivity, compare_scenarios, coreweave_benchmark and payment_routes.</li>
-            <li>Tool results come back as data, and the model writes a short answer from them.</li>
-            <li>Limits per visitor and per day keep costs predictable. Sample questions replay the agent's steps and run the calculations in your browser.</li>
-          </ol></div>
-      </div>
-      <div>
-        <div class="timeline" id="cp-steps"><div class="empty">Pick a sample question or type your own. Each step the agent takes will appear here.</div></div>
-        <div class="card chart-card" id="cp-chart-card" hidden style="margin-top:12px"><h3 id="cp-chart-title">Chart</h3><div class="chart" id="cp-chart"></div></div>
-      </div>
-    </div>
+      <p class="muted" style="margin-top:18px;font-size:14px">Code and run history: <a href="https://github.com/P3K30NG0T/tomphan" target="_blank" rel="noopener">github.com/P3K30NG0T/tomphan</a> (folder <span class="mono">harness/</span>).</p>
+    </section>
   </div>
 </div>
 </main>
 
+<div id="tip" class="tip" role="tooltip" hidden></div>
 <footer>
   <div class="wrap">
     <span><b>tomphan.</b> · Phan Nguyen Hong Quang</span>
-    <span>Built by hand with HTML, CSS and JavaScript. Independent analysis on public data.</span>
+    <span>Independent analysis on open data. Market data refreshed weekly by the research harness.</span>
   </div>
 </footer>
 <script type="module" src="assets/app.js"></script>
