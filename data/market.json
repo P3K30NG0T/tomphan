@@ -1,7 +1,7 @@
 {
  "asOf": "2026-09-28",
- "generatedAt": "2026-10-08T15:20:07.697Z",
- "runId": "37799843809",
+ "generatedAt": "2026-10-08T15:32:48.468Z",
+ "runId": "37801605744",
  "models": [
   {
    "slug": "nvidia-a100",
@@ -1325,7 +1325,7 @@
     "capex": 14117
    }
   ],
-  "cached": "copy recorded 2026-10-07",
+  "cached": "last good run",
   "facts": [
    {
     "key": "topCustomer",
