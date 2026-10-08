@@ -1,0 +1,213 @@
+{
+ "schema": 1,
+ "runId": "37799541702",
+ "runUrl": "https://github.com/P3K30NG0T/tomphan/actions/runs/37799541702",
+ "trigger": "manual",
+ "startedAt": "2026-10-08T15:17:49.219Z",
+ "steps": [
+  {
+   "id": "fetch-gpu",
+   "title": "Fetch GPU rental price history",
+   "kind": "tool",
+   "tool": "fetch_gpu_prices",
+   "status": "ok",
+   "ms": 2853,
+   "summary": "Downloaded 5 of 5 files: A100 509 rows, H100 529 rows, H200 516 rows, B200 475 rows, B300 224 rows",
+   "detail": null
+  },
+  {
+   "id": "fetch-sec",
+   "title": "Fetch CoreWeave figures from SEC filings",
+   "kind": "tool",
+   "tool": "fetch_sec_facts",
+   "status": "error",
+   "ms": 9112,
+   "summary": "HTTP 403 for https://data.sec.gov/api/xbrl/companyconcept/CIK0001769628/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json"
+  },
+  {
+   "id": "validate",
+   "title": "Validate the data before using it",
+   "kind": "check",
+   "tool": "run_checks",
+   "status": "ok",
+   "ms": 159,
+   "summary": "7 passed, 0 warnings, 0 blocking failures",
+   "detail": null
+  },
+  {
+   "id": "stats",
+   "title": "Compute market statistics",
+   "kind": "tool",
+   "tool": "market_stats",
+   "status": "ok",
+   "ms": 2,
+   "summary": "5 GPU models; H100 on-demand $3.36/hr (+13% over 51 weeks); price ladder implies 24% a year (R² 0.99); 6 contract terms",
+   "detail": null
+  },
+  {
+   "id": "assumptions",
+   "title": "Turn evidence into model assumptions",
+   "kind": "tool",
+   "tool": "set_assumptions",
+   "status": "ok",
+   "ms": 0,
+   "summary": "rent $2.35/hr (contract), decline 24%/yr (price ladder), life 5 yrs, capex $35k",
+   "detail": null
+  },
+  {
+   "id": "model",
+   "title": "Run the model and cross-check it in Python",
+   "kind": "tool",
+   "tool": "run_model + reconcile",
+   "status": "ok",
+   "ms": 72,
+   "summary": "Base NPV $-5297 per GPU, IRR 3.5%; Python check differs by $0",
+   "detail": {
+    "py": {
+     "npv": -5296.86,
+     "irr": 0.0355
+    }
+   }
+  },
+  {
+   "id": "agent-review",
+   "title": "Agent drafts key findings; every number is checked against the evidence",
+   "kind": "agent",
+   "tool": "draft_findings + grounding_check",
+   "status": "skipped",
+   "ms": 0,
+   "summary": "Skipped: no ANTHROPIC_API_KEY set for the harness. Deterministic steps still ran.",
+   "detail": null
+  },
+  {
+   "id": "publish",
+   "title": "Publish data for the site",
+   "kind": "tool",
+   "tool": "write_outputs",
+   "status": "ok",
+   "ms": 1,
+   "summary": "Wrote data/market.json (as of 2026-09-28)",
+   "detail": null
+  }
+ ],
+ "checks": [
+  {
+   "id": "gpu-present",
+   "label": "H100 price file downloaded",
+   "result": "pass",
+   "blocking": true,
+   "detail": null,
+   "step": "validate"
+  },
+  {
+   "id": "gpu-schema",
+   "label": "Every row has a date, billing type and numeric price",
+   "result": "pass",
+   "blocking": true,
+   "detail": null,
+   "step": "validate"
+  },
+  {
+   "id": "gpu-units",
+   "label": "H100 on-demand prices are in a plausible USD/GPU-hr range (0.05–60)",
+   "result": "pass",
+   "blocking": true,
+   "detail": null,
+   "step": "validate"
+  },
+  {
+   "id": "gpu-coverage",
+   "label": "At least 40 weeks of H100 on-demand history and 4+ providers in the latest week",
+   "result": "pass",
+   "blocking": true,
+   "detail": "52 weeks; 41 providers",
+   "step": "validate"
+  },
+  {
+   "id": "gpu-fresh",
+   "label": "Latest complete week is under 21 days old",
+   "result": "pass",
+   "blocking": false,
+   "detail": "2026-09-28",
+   "step": "validate"
+  },
+  {
+   "id": "gpu-jumps",
+   "label": "No week-on-week H100 price move above 25%",
+   "result": "pass",
+   "blocking": false,
+   "detail": null,
+   "step": "validate"
+  },
+  {
+   "id": "gpu-cross",
+   "label": "Dataset agrees with the published H100 median ($3.47) within 15%",
+   "result": "pass",
+   "blocking": false,
+   "detail": "dataset 4-week avg $3.36 (-3%)",
+   "step": "validate"
+  },
+  {
+   "id": "model-reconcile",
+   "label": "JavaScript and Python give the same NPV (within $1)",
+   "result": "pass",
+   "blocking": true,
+   "detail": "JS -5296.86 vs Python -5296.86",
+   "step": "model"
+  }
+ ],
+ "sources": [
+  {
+   "id": "gpu-nvidia-a100",
+   "title": "GetDeploying GPU Rental Price History (CC BY 4.0): A100",
+   "url": "https://getdeploying.com/dataset/gpu-prices/nvidia-a100.json",
+   "bytes": 112202,
+   "sha256": "8226fed7bea8d7ce",
+   "rows": 509,
+   "license": "CC-BY-4.0",
+   "kind": "auto"
+  },
+  {
+   "id": "gpu-nvidia-h100",
+   "title": "GetDeploying GPU Rental Price History (CC BY 4.0): H100",
+   "url": "https://getdeploying.com/dataset/gpu-prices/nvidia-h100.json",
+   "bytes": 116502,
+   "sha256": "cd3dff11b79591e3",
+   "rows": 529,
+   "license": "CC-BY-4.0",
+   "kind": "auto"
+  },
+  {
+   "id": "gpu-nvidia-h200",
+   "title": "GetDeploying GPU Rental Price History (CC BY 4.0): H200",
+   "url": "https://getdeploying.com/dataset/gpu-prices/nvidia-h200.json",
+   "bytes": 112703,
+   "sha256": "a57636e5abebe530",
+   "rows": 516,
+   "license": "CC-BY-4.0",
+   "kind": "auto"
+  },
+  {
+   "id": "gpu-nvidia-b200",
+   "title": "GetDeploying GPU Rental Price History (CC BY 4.0): B200",
+   "url": "https://getdeploying.com/dataset/gpu-prices/nvidia-b200.json",
+   "bytes": 104673,
+   "sha256": "8bee07ed198be480",
+   "rows": 475,
+   "license": "CC-BY-4.0",
+   "kind": "auto"
+  },
+  {
+   "id": "gpu-nvidia-b300",
+   "title": "GetDeploying GPU Rental Price History (CC BY 4.0): B300",
+   "url": "https://getdeploying.com/dataset/gpu-prices/nvidia-b300.json",
+   "bytes": 49933,
+   "sha256": "7afeaf5a66f252af",
+   "rows": 224,
+   "license": "CC-BY-4.0",
+   "kind": "auto"
+  }
+ ],
+ "outcome": "published",
+ "finishedAt": "2026-10-08T15:18:01.418Z"
+}
