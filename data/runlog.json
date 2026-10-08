@@ -1,9 +1,9 @@
 {
  "schema": 1,
- "runId": "37799541702",
- "runUrl": "https://github.com/P3K30NG0T/tomphan/actions/runs/37799541702",
+ "runId": "37799843809",
+ "runUrl": "https://github.com/P3K30NG0T/tomphan/actions/runs/37799843809",
  "trigger": "manual",
- "startedAt": "2026-10-08T15:17:49.219Z",
+ "startedAt": "2026-10-08T15:19:54.926Z",
  "steps": [
   {
    "id": "fetch-gpu",
@@ -11,7 +11,7 @@
    "kind": "tool",
    "tool": "fetch_gpu_prices",
    "status": "ok",
-   "ms": 2853,
+   "ms": 3357,
    "summary": "Downloaded 5 of 5 files: A100 509 rows, H100 529 rows, H200 516 rows, B200 475 rows, B300 224 rows",
    "detail": null
   },
@@ -21,7 +21,7 @@
    "kind": "tool",
    "tool": "fetch_sec_facts",
    "status": "error",
-   "ms": 9112,
+   "ms": 9317,
    "summary": "HTTP 403 for https://data.sec.gov/api/xbrl/companyconcept/CIK0001769628/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json"
   },
   {
@@ -29,9 +29,9 @@
    "title": "Validate the data before using it",
    "kind": "check",
    "tool": "run_checks",
-   "status": "ok",
-   "ms": 159,
-   "summary": "7 passed, 0 warnings, 0 blocking failures",
+   "status": "warn",
+   "ms": 16,
+   "summary": "8 passed, 1 warnings, 0 blocking failures",
    "detail": null
   },
   {
@@ -40,7 +40,7 @@
    "kind": "tool",
    "tool": "market_stats",
    "status": "ok",
-   "ms": 2,
+   "ms": 1,
    "summary": "5 GPU models; H100 on-demand $3.36/hr (+13% over 51 weeks); price ladder implies 24% a year (R² 0.99); 6 contract terms",
    "detail": null
   },
@@ -50,7 +50,7 @@
    "kind": "tool",
    "tool": "set_assumptions",
    "status": "ok",
-   "ms": 0,
+   "ms": 1,
    "summary": "rent $2.35/hr (contract), decline 24%/yr (price ladder), life 5 yrs, capex $35k",
    "detail": null
   },
@@ -60,7 +60,7 @@
    "kind": "tool",
    "tool": "run_model + reconcile",
    "status": "ok",
-   "ms": 72,
+   "ms": 77,
    "summary": "Base NPV $-5297 per GPU, IRR 3.5%; Python check differs by $0",
    "detail": {
     "py": {
@@ -91,6 +91,14 @@
   }
  ],
  "checks": [
+  {
+   "id": "sec-fallback",
+   "label": "SEC API unreachable: using CoreWeave figures from the copy recorded 2026-10-07",
+   "result": "warn",
+   "blocking": false,
+   "detail": null,
+   "step": "fetch-sec"
+  },
   {
    "id": "gpu-present",
    "label": "H100 price file downloaded",
@@ -145,6 +153,14 @@
    "result": "pass",
    "blocking": false,
    "detail": "dataset 4-week avg $3.36 (-3%)",
+   "step": "validate"
+  },
+  {
+   "id": "sec-match",
+   "label": "CoreWeave FY2025 figures match the values first recorded (no restatement)",
+   "result": "pass",
+   "blocking": false,
+   "detail": "revenue 5131, D&A 2454",
    "step": "validate"
   },
   {
@@ -209,5 +225,5 @@
   }
  ],
  "outcome": "published",
- "finishedAt": "2026-10-08T15:18:01.418Z"
+ "finishedAt": "2026-10-08T15:20:07.697Z"
 }
