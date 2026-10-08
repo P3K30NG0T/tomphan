@@ -1,0 +1,33 @@
+{
+ "note": "CoreWeave figures recorded from SEC XBRL on 2026-10-07. Used only when the SEC API is unreachable.",
+ "periods": [
+  {
+   "label": "FY2023",
+   "revenue": 229,
+   "dna": 103,
+   "operatingIncome": -14,
+   "capex": 2943
+  },
+  {
+   "label": "FY2024",
+   "revenue": 1915,
+   "dna": 863,
+   "operatingIncome": 324,
+   "capex": 8702
+  },
+  {
+   "label": "FY2025",
+   "revenue": 5131,
+   "dna": 2454,
+   "operatingIncome": -46,
+   "capex": 10309
+  },
+  {
+   "label": "H1 2026",
+   "revenue": 4653,
+   "dna": 2540,
+   "operatingIncome": -193,
+   "capex": 14117
+  }
+ ]
+}

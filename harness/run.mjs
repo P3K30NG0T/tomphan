@@ -13,6 +13,8 @@ import { reviewWithAgent } from "./agent.mjs";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = join(ROOT, "data");
 const UA = "tomphan-portfolio-harness/1.0 (+https://github.com/P3K30NG0T/tomphan)";
+// SEC asks automated clients to name a contact in the User-Agent (sec.gov/os/accessing-edgar-data).
+const SEC_UA = `tomphan-portfolio-harness ${process.env.SEC_CONTACT || "89442471+P3K30NG0T@users.noreply.github.com"}`;
 const now = new Date();
 const sha = buf => createHash("sha256").update(buf).digest("hex").slice(0, 16);
 const round = (x, d = 2) => x === null || x === undefined || !Number.isFinite(x) ? null : Math.round(x * 10 ** d) / 10 ** d;
@@ -45,11 +47,11 @@ function check(id, label, pass, { blocking = false, detail = null, stepId } = {}
   log.checks.push({ id, label, result: pass ? "pass" : blocking ? "fail" : "warn", blocking, detail, step: stepId });
   return pass;
 }
-async function fetchBytes(url, tries = 3) {
+async function fetchBytes(url, tries = 3, ua = UA) {
   let last;
   for (let i = 0; i < tries; i++) {
     try {
-      const r = await fetch(url, { headers: { "user-agent": UA, accept: "application/json" }, signal: AbortSignal.timeout(30000) });
+      const r = await fetch(url, { headers: { "user-agent": ua, accept: "application/json" }, signal: AbortSignal.timeout(30000) });
       if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
       return Buffer.from(await r.arrayBuffer());
     } catch (e) { last = e; await new Promise(res => setTimeout(res, 1500 * (i + 1))); }
@@ -86,7 +88,7 @@ await step("fetch-sec", "Fetch CoreWeave figures from SEC filings", "tool", "fet
   const series = {};
   for (const [key, tag] of Object.entries(AUTO.sec.tags)) {
     const url = AUTO.sec.file(tag);
-    const buf = await fetchBytes(url);
+    const buf = await fetchBytes(url, 3, SEC_UA);
     const units = JSON.parse(buf.toString("utf8")).units?.USD || [];
     log.sources.push({ id: `sec-${key}`, title: `${AUTO.sec.title}: ${tag}`, url, bytes: buf.length, sha256: sha(buf), kind: "auto" });
     series[key] = units;
@@ -104,7 +106,11 @@ await step("fetch-sec", "Fetch CoreWeave figures from SEC filings", "tool", "fet
   coreweave = out;
   return { summary: `${out.periods.map(p => p.label).join(", ")}: revenue, D&A, operating income, capex` };
 });
-if (!coreweave && prev?.coreweave) { coreweave = prev.coreweave; check("sec-fallback", "SEC unreachable: kept last good CoreWeave figures", false, { stepId: "fetch-sec" }); }
+if (!coreweave) {
+  const cached = prev?.coreweave?.periods?.length ? { ...prev.coreweave, cached: "last good run" } : { ...JSON.parse(readFileSync(join(ROOT, "harness", "cache", "coreweave.json"), "utf8")), cached: "copy recorded 2026-10-07" };
+  coreweave = cached;
+  check("sec-fallback", `SEC API unreachable: using CoreWeave figures from the ${cached.cached}`, false, { stepId: "fetch-sec" });
+}
 
 /* 3. Validate */
 await step("validate", "Validate the data before using it", "check", "run_checks", async () => {
