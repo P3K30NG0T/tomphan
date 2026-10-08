@@ -47,7 +47,8 @@ export default async function handler(req, res) {
   if (req.method === "GET") { res.status(200).json({ live: Boolean(process.env.ANTHROPIC_API_KEY) }); return; }
   if (req.method !== "POST") { res.status(405).json({ error: "Use POST" }); return; }
   if (!process.env.ANTHROPIC_API_KEY) { res.status(503).json({ error: "Live mode is not configured yet.", fallback: true }); return; }
-  const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body || {});
+  let body = req.body || {};
+  if (typeof body === "string") { try { body = JSON.parse(body || "{}"); } catch { body = {}; } }
   const question = String(body.question || "").trim().slice(0, MAX_QUESTION);
   if (!question) { res.status(400).json({ error: "Type a question first." }); return; }
   const ip = (req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";

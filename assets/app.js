@@ -245,6 +245,18 @@ function renderMemo() {
   $("#memo-headline").textContent = `With these inputs, fans spend about ${usdM(a.gross)} a month. Your route mix costs ${pc(a.effectiveFee)} in payment fees instead of 30% if everything went through app stores, leaving about ${usdM(a.savedVsAllIap)} more each month for creators and the platform.`;
 }
 
+/* ---------------- optional files ----------------
+   Add assets/portrait.jpg and resume.pdf to the repo and they show up; nothing else to edit. */
+function optionalFiles() {
+  const img = new Image();
+  img.alt = "Portrait of Tom Phan";
+  img.onload = () => { const p = $(".portrait"); p.textContent = ""; p.removeAttribute("aria-hidden"); p.appendChild(img); };
+  img.src = "assets/portrait.jpg";
+  fetch("resume.pdf", { method: "HEAD" })
+    .then(r => { if (r.ok && (r.headers.get("content-type") || "").includes("pdf")) document.querySelectorAll("[data-resume]").forEach(a => { a.hidden = false; }); })
+    .catch(() => {});
+}
+
 /* ---------------- boot ---------------- */
 buildSliders();
 document.querySelectorAll("[data-sc]").forEach(b => b.addEventListener("click", () => applyScenario(b.dataset.sc)));
@@ -252,4 +264,5 @@ $("#gpu-reset").addEventListener("click", () => applyScenario("base"));
 renderGpu(); loadGpuData();
 buildMemo(); renderMemo();
 initCopilot({ barLineChart, tornadoChart, routeChart });
+optionalFiles();
 route();

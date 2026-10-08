@@ -20,6 +20,18 @@ Portfolio of Tom Phan (Phan Nguyen Hong Quang). Static HTML/CSS/JS plus one Verc
 
 Without the API key the site still works: sample questions replay the agent steps and compute every number in the browser.
 
+## Add later, no code changes
+- `assets/portrait.jpg`: a square photo (about 600×600). It replaces the "TP" circle on the home page.
+- `resume.pdf` in the repo root: the Résumé links in the nav and hero appear on their own.
+- `ANTHROPIC_API_KEY` in Vercel: the copilot switches to live mode.
+
+## Change the site after it is live
+Vercel redeploys on every commit to `main`, usually within a minute.
+- Small text edits: open the file on github.com, click the pencil icon, edit, **Commit changes**.
+- New files: **Add file → Upload files**, drop them into the right folder, commit.
+- Where things live: page text in `index.html`; model assumptions in `assets/model.js`; memo inputs and Telegram facts in `assets/memo.js`; sample copilot questions in `assets/copilot.js`; CoreWeave figures in `data/gpu.json`; colors and fonts at the top of `assets/style.css`.
+- If Vercel gives the project a domain other than `tomphan.vercel.app`, update the `og:image` URL in the `<head>` of `index.html` so link previews show the image.
+
 ## Local check
 `python3 -m http.server` then open http://localhost:8000 (the copilot runs in sample mode locally).
 
