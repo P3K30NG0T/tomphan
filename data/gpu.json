@@ -1,0 +1,39 @@
+{
+  "asOf": "2026-10-07",
+  "coreweave": {
+    "note": "USD millions. FY = calendar year. H1 2026 = Jan–Jun 2026 (10-Q).",
+    "periods": ["FY2023", "FY2024", "FY2025", "H1 2026"],
+    "revenue": [229, 1915, 5131, 4653],
+    "dna": [103, 863, 2454, 2540],
+    "operatingIncome": [-14, 324, -46, -193],
+    "capex": [2943, 8702, 10309, 14117],
+    "netLoss": [594, 863, 1200, null],
+    "facts": [
+      { "label": "Data centers (end 2025)", "value": "43" },
+      { "label": "Active power (end 2025)", "value": "850+ MW" },
+      { "label": "Contracted power", "value": "~3.1 GW" },
+      { "label": "Remaining performance obligations", "value": "$60.7bn" },
+      { "label": "Weighted-avg contract length", "value": "~5 years" },
+      { "label": "Revenue from top customer (Microsoft), 2025", "value": "~67%" },
+      { "label": "GPU depreciation life (accounting)", "value": "6 years" }
+    ]
+  },
+  "market": [
+    { "label": "H100 1-yr contract, Oct 2025", "value": 1.70, "unit": "$/GPU-hr", "source": "semianalysis" },
+    { "label": "H100 1-yr contract, Mar 2026", "value": 2.35, "unit": "$/GPU-hr", "source": "semianalysis" },
+    { "label": "H100 on-demand median, 41 providers (Oct 5, 2026)", "value": 3.47, "unit": "$/GPU-hr", "source": "getdeploying" },
+    { "label": "H100 on-demand, dedicated GPU clouds", "value": 4.50, "unit": "$/GPU-hr", "source": "getdeploying" },
+    { "label": "H100 on-demand, hyperscalers", "value": 7.89, "unit": "$/GPU-hr", "source": "getdeploying" },
+    { "label": "1-yr reservation vs on-demand", "value": -0.32, "unit": "discount", "source": "getdeploying" },
+    { "label": "3-yr reservation vs on-demand", "value": -0.49, "unit": "discount", "source": "getdeploying" },
+    { "label": "US industrial electricity, May 2026", "value": 8.71, "unit": "¢/kWh", "source": "eia" }
+  ],
+  "sources": {
+    "coreweave10k": { "title": "CoreWeave Form 10-K, FY2025 (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm" },
+    "xbrl": { "title": "CoreWeave XBRL company facts (SEC API)", "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001769628/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json" },
+    "getdeploying": { "title": "GetDeploying GPU Price Trends and open dataset", "url": "https://getdeploying.com/gpu-price-trends" },
+    "semianalysis": { "title": "SemiAnalysis, The Great GPU Shortage (H100 1-yr rental index)", "url": "https://newsletter.semianalysis.com/p/the-great-gpu-shortage-rental-capacity" },
+    "eia": { "title": "EIA Monthly Energy Review, Table 9.8 (Aug 2026)", "url": "https://www.eia.gov/TOTALENERGY/data/monthly/pdf/sec9_10.pdf" },
+    "burry": { "title": "Nasdaq / Motley Fool on the GPU depreciation debate", "url": "https://www.nasdaq.com/articles/michael-burrys-latest-warning-could-be-bad-news-coreweave" }
+  }
+}
