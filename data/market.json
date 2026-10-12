@@ -1,18 +1,18 @@
 {
- "asOf": "2026-09-28",
- "generatedAt": "2026-10-08T15:32:48.468Z",
- "runId": "37801605744",
+ "asOf": "2026-10-05",
+ "generatedAt": "2026-10-12T09:16:46.592Z",
+ "runId": "38228808689",
  "models": [
   {
    "slug": "nvidia-a100",
    "label": "A100",
    "available": 2020.4,
-   "latest": 1.74,
+   "latest": 1.77,
    "first": 1.68,
-   "weeks": 51,
-   "change": 0.041,
-   "providers": 41,
-   "spotRatio": 0.67,
+   "weeks": 52,
+   "change": 0.054,
+   "providers": 40,
+   "spotRatio": 0.6,
    "series": [
     [
      "2025-10-06",
@@ -221,6 +221,10 @@
     [
      "2026-09-28",
      1.76
+    ],
+    [
+     "2026-10-05",
+     1.851
     ]
    ]
   },
@@ -228,12 +232,12 @@
    "slug": "nvidia-h100",
    "label": "H100",
    "available": 2022.9,
-   "latest": 3.36,
+   "latest": 3.4,
    "first": 2.99,
-   "weeks": 51,
-   "change": 0.126,
+   "weeks": 52,
+   "change": 0.138,
    "providers": 41,
-   "spotRatio": 0.61,
+   "spotRatio": 0.6,
    "series": [
     [
      "2025-10-06",
@@ -442,6 +446,10 @@
     [
      "2026-09-28",
      3.382
+    ],
+    [
+     "2026-10-05",
+     3.49
     ]
    ]
   },
@@ -449,12 +457,12 @@
    "slug": "nvidia-h200",
    "label": "H200",
    "available": 2024.3,
-   "latest": 4.45,
+   "latest": 4.5,
    "first": 3.5,
-   "weeks": 51,
-   "change": 0.27,
-   "providers": 35,
-   "spotRatio": 0.68,
+   "weeks": 52,
+   "change": 0.287,
+   "providers": 33,
+   "spotRatio": 0.71,
    "series": [
     [
      "2025-10-06",
@@ -663,6 +671,10 @@
     [
      "2026-09-28",
      4.5
+    ],
+    [
+     "2026-10-05",
+     4.629
     ]
    ]
   },
@@ -670,12 +682,12 @@
    "slug": "nvidia-b200",
    "label": "B200",
    "available": 2025.1,
-   "latest": 6.51,
+   "latest": 6.65,
    "first": 5.7,
-   "weeks": 51,
-   "change": 0.142,
-   "providers": 20,
-   "spotRatio": 0.67,
+   "weeks": 52,
+   "change": 0.165,
+   "providers": 19,
+   "spotRatio": 0.7,
    "series": [
     [
      "2025-10-06",
@@ -884,6 +896,10 @@
     [
      "2026-09-28",
      6.79
+    ],
+    [
+     "2026-10-05",
+     6.79
     ]
    ]
   },
@@ -891,12 +907,12 @@
    "slug": "nvidia-b300",
    "label": "B300",
    "available": 2025.8,
-   "latest": 8.07,
+   "latest": 8.34,
    "first": 5.22,
-   "weeks": 46,
-   "change": 0.545,
-   "providers": 16,
-   "spotRatio": 0.69,
+   "weeks": 47,
+   "change": 0.597,
+   "providers": 15,
+   "spotRatio": 0.64,
    "series": [
     [
      "2025-11-10",
@@ -1085,78 +1101,82 @@
     [
      "2026-09-28",
      8.625
+    ],
+    [
+     "2026-10-05",
+     8.99
     ]
    ]
   }
  ],
  "ladder": {
-  "annualDecline": 0.244,
-  "r2": 0.99,
+  "annualDecline": 0.246,
+  "r2": 0.98,
   "points": [
    {
     "label": "A100",
     "age": 6.3,
-    "price": 1.74
+    "price": 1.77
    },
    {
     "label": "H100",
     "age": 3.8,
-    "price": 3.36
+    "price": 3.4
    },
    {
     "label": "H200",
     "age": 2.5,
-    "price": 4.45
+    "price": 4.5
    },
    {
     "label": "B200",
     "age": 1.7,
-    "price": 6.51
+    "price": 6.65
    },
    {
     "label": "B300",
     "age": 1,
-    "price": 8.07
+    "price": 8.34
    }
   ],
-  "intercept": 2.2969,
-  "slope": -0.2796
+  "intercept": 2.3224,
+  "slope": -0.2818
  },
  "terms": [
   {
    "months": 1,
-   "price": 3.21,
-   "discount": 0.044,
+   "price": 3.25,
+   "discount": 0.038,
    "providers": 12
   },
   {
    "months": 3,
-   "price": 3.31,
-   "discount": 0.015,
+   "price": 3.32,
+   "discount": 0.016,
    "providers": 6
   },
   {
    "months": 6,
    "price": 3.09,
-   "discount": 0.08,
+   "discount": 0.085,
    "providers": 10
   },
   {
    "months": 12,
-   "price": 3.05,
-   "discount": 0.091,
+   "price": 3.11,
+   "discount": 0.08,
    "providers": 14
   },
   {
    "months": 24,
    "price": 2.71,
-   "discount": 0.194,
+   "discount": 0.197,
    "providers": 4
   },
   {
    "months": 36,
    "price": 2.97,
-   "discount": 0.116,
+   "discount": 0.119,
    "providers": 6
   }
  ],
@@ -1166,12 +1186,12 @@
    "basis": "contract",
    "why": "Year-1 rent = the H100 1-year contract index: what a buyer of capacity actually signs.",
    "source": "contract1y",
-   "crossCheck": "Dataset 12-month reserved median $3.05 (14 providers)"
+   "crossCheck": "Dataset 12-month reserved median $3.11 (14 providers)"
   },
   "decline": {
-   "value": 0.24,
+   "value": 0.25,
    "basis": "price ladder",
-   "why": "Older GPUs rent for less: across 5 models, rent falls about 24% per year of age (R² 0.99).",
+   "why": "Older GPUs rent for less: across 5 models, rent falls about 25% per year of age (R² 0.98).",
    "source": "getdeploying"
   },
   "lock": {
@@ -1208,24 +1228,24 @@
  },
  "results": {
   "base": {
-   "npv": -5297,
-   "irr": 0.0355,
-   "payback": 4.38,
-   "breakevenPrice": 2.72,
-   "breakevenCapex": 28500,
+   "npv": -5859,
+   "irr": 0.0265,
+   "payback": 4.52,
+   "breakevenPrice": 2.77,
+   "breakevenCapex": 27800,
    "cashCost": 0.47
   },
   "scenarios": {
    "bull": {
     "label": "Shortage lasts: slower price fall, 3-year contract, 6-year life",
-    "npv": 8205,
-    "irr": 0.2031,
+    "npv": 7611,
+    "irr": 0.1976,
     "payback": 2.69,
     "inputs": {
      "capex": 35000,
      "price": 2.35,
      "lock": 3,
-     "decline": 0.15999999999999998,
+     "decline": 0.16999999999999998,
      "util": 0.9,
      "kw": 1.4,
      "elec": 0.087,
@@ -1238,14 +1258,14 @@
    },
    "base": {
     "label": "Market evidence as measured",
-    "npv": -5297,
-    "irr": 0.0355,
-    "payback": 4.38,
+    "npv": -5859,
+    "irr": 0.0265,
+    "payback": 4.52,
     "inputs": {
      "capex": 35000,
      "price": 2.35,
      "lock": 1,
-     "decline": 0.24,
+     "decline": 0.25,
      "util": 0.85,
      "kw": 1.4,
      "elec": 0.087,
@@ -1258,14 +1278,14 @@
    },
    "bear": {
     "label": "Faster obsolescence: steeper price fall, lower utilization, 4-year life",
-    "npv": -13672,
-    "irr": -0.1207,
+    "npv": -13980,
+    "irr": -0.1278,
     "payback": null,
     "inputs": {
      "capex": 35000,
      "price": 2.35,
      "lock": 1,
-     "decline": 0.32,
+     "decline": 0.33,
      "util": 0.7,
      "kw": 1.4,
      "elec": 0.087,
@@ -1280,7 +1300,7 @@
   "topDrivers": [
    {
     "driver": "Rent, year 1",
-    "swing": 13421
+    "swing": 13196
    },
    {
     "driver": "Capex per GPU",
@@ -1288,7 +1308,7 @@
    },
    {
     "driver": "Annual rent decline",
-    "swing": 9118
+    "swing": 8929
    }
   ]
  },
