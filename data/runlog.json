@@ -1,9 +1,9 @@
 {
  "schema": 1,
- "runId": "38228808689",
- "runUrl": "https://github.com/P3K30NG0T/tomphan/actions/runs/38228808689",
+ "runId": "39218545370",
+ "runUrl": "https://github.com/P3K30NG0T/tomphan/actions/runs/39218545370",
  "trigger": "weekly schedule",
- "startedAt": "2026-10-12T09:16:33.701Z",
+ "startedAt": "2026-10-19T07:50:08.426Z",
  "steps": [
   {
    "id": "fetch-gpu",
@@ -11,8 +11,8 @@
    "kind": "tool",
    "tool": "fetch_gpu_prices",
    "status": "ok",
-   "ms": 3072,
-   "summary": "Downloaded 5 of 5 files: A100 509 rows, H100 529 rows, H200 516 rows, B200 475 rows, B300 224 rows",
+   "ms": 3406,
+   "summary": "Downloaded 5 of 5 files: A100 509 rows, H100 531 rows, H200 518 rows, B200 479 rows, B300 235 rows",
    "detail": null
   },
   {
@@ -21,7 +21,7 @@
    "kind": "tool",
    "tool": "fetch_sec_facts",
    "status": "error",
-   "ms": 9390,
+   "ms": 9304,
    "summary": "HTTP 403 for https://data.sec.gov/api/xbrl/companyconcept/CIK0001769628/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json"
   },
   {
@@ -30,7 +30,7 @@
    "kind": "check",
    "tool": "run_checks",
    "status": "warn",
-   "ms": 126,
+   "ms": 15,
    "summary": "8 passed, 1 warning, 0 blocking failures",
    "detail": null
   },
@@ -41,7 +41,7 @@
    "tool": "market_stats",
    "status": "ok",
    "ms": 1,
-   "summary": "5 GPU models; H100 on-demand $3.4/hr (+14% over 52 weeks); price ladder implies 25% a year (R² 0.98); 6 contract terms",
+   "summary": "5 GPU models; H100 on-demand $3.44/hr (+15% over 52 weeks); price ladder implies 25% a year (R² 0.98); 6 contract terms",
    "detail": null
   },
   {
@@ -60,7 +60,7 @@
    "kind": "tool",
    "tool": "run_model + reconcile",
    "status": "ok",
-   "ms": 302,
+   "ms": 73,
    "summary": "Base NPV −$5,859 per GPU, IRR 2.7%; the Python check differs by $0",
    "detail": {
     "py": {
@@ -85,8 +85,8 @@
    "kind": "tool",
    "tool": "write_outputs",
    "status": "ok",
-   "ms": 0,
-   "summary": "Wrote data/market.json (as of 2026-10-05)",
+   "ms": 1,
+   "summary": "Wrote data/market.json (as of 2026-10-12)",
    "detail": null
   }
  ],
@@ -128,7 +128,7 @@
    "label": "At least 40 weeks of H100 on-demand history and 4+ providers in the latest week",
    "result": "pass",
    "blocking": true,
-   "detail": "53 weeks; 41 providers",
+   "detail": "53 weeks; 40 providers",
    "step": "validate"
   },
   {
@@ -136,7 +136,7 @@
    "label": "Latest complete week is under 21 days old",
    "result": "pass",
    "blocking": false,
-   "detail": "2026-10-05",
+   "detail": "2026-10-12",
    "step": "validate"
   },
   {
@@ -152,7 +152,7 @@
    "label": "Dataset agrees with the published H100 median ($3.47) within 15%",
    "result": "pass",
    "blocking": false,
-   "detail": "dataset 4-week avg $3.4 (-2%)",
+   "detail": "dataset 4-week avg $3.44 (-1%)",
    "step": "validate"
   },
   {
@@ -177,8 +177,8 @@
    "id": "gpu-nvidia-a100",
    "title": "GetDeploying GPU Rental Price History (CC BY 4.0): A100",
    "url": "https://getdeploying.com/dataset/gpu-prices/nvidia-a100.json",
-   "bytes": 112197,
-   "sha256": "a5a7b4d0f9a04c74",
+   "bytes": 112215,
+   "sha256": "f054a793b9529075",
    "rows": 509,
    "license": "CC-BY-4.0",
    "kind": "auto"
@@ -187,9 +187,9 @@
    "id": "gpu-nvidia-h100",
    "title": "GetDeploying GPU Rental Price History (CC BY 4.0): H100",
    "url": "https://getdeploying.com/dataset/gpu-prices/nvidia-h100.json",
-   "bytes": 116491,
-   "sha256": "aba10682523c935c",
-   "rows": 529,
+   "bytes": 116920,
+   "sha256": "29007192522d8664",
+   "rows": 531,
    "license": "CC-BY-4.0",
    "kind": "auto"
   },
@@ -197,9 +197,9 @@
    "id": "gpu-nvidia-h200",
    "title": "GetDeploying GPU Rental Price History (CC BY 4.0): H200",
    "url": "https://getdeploying.com/dataset/gpu-prices/nvidia-h200.json",
-   "bytes": 112688,
-   "sha256": "28d08161c1f7c919",
-   "rows": 516,
+   "bytes": 113130,
+   "sha256": "3a632accd075abe4",
+   "rows": 518,
    "license": "CC-BY-4.0",
    "kind": "auto"
   },
@@ -207,9 +207,9 @@
    "id": "gpu-nvidia-b200",
    "title": "GetDeploying GPU Rental Price History (CC BY 4.0): B200",
    "url": "https://getdeploying.com/dataset/gpu-prices/nvidia-b200.json",
-   "bytes": 104665,
-   "sha256": "294865b471e567a4",
-   "rows": 475,
+   "bytes": 105528,
+   "sha256": "1a2bc7ee570fa996",
+   "rows": 479,
    "license": "CC-BY-4.0",
    "kind": "auto"
   },
@@ -217,13 +217,13 @@
    "id": "gpu-nvidia-b300",
    "title": "GetDeploying GPU Rental Price History (CC BY 4.0): B300",
    "url": "https://getdeploying.com/dataset/gpu-prices/nvidia-b300.json",
-   "bytes": 49912,
-   "sha256": "50791560afbe576e",
-   "rows": 224,
+   "bytes": 52284,
+   "sha256": "16469c64ae9c88ee",
+   "rows": 235,
    "license": "CC-BY-4.0",
    "kind": "auto"
   }
  ],
  "outcome": "published",
- "finishedAt": "2026-10-12T09:16:46.592Z"
+ "finishedAt": "2026-10-19T07:50:21.226Z"
 }

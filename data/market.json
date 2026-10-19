@@ -1,23 +1,19 @@
 {
- "asOf": "2026-10-05",
- "generatedAt": "2026-10-12T09:16:46.592Z",
- "runId": "38228808689",
+ "asOf": "2026-10-12",
+ "generatedAt": "2026-10-19T07:50:21.226Z",
+ "runId": "39218545370",
  "models": [
   {
    "slug": "nvidia-a100",
    "label": "A100",
    "available": 2020.4,
-   "latest": 1.77,
+   "latest": 1.78,
    "first": 1.68,
    "weeks": 52,
-   "change": 0.054,
+   "change": 0.063,
    "providers": 40,
-   "spotRatio": 0.6,
+   "spotRatio": 0.56,
    "series": [
-    [
-     "2025-10-06",
-     1.675
-    ],
     [
      "2025-10-13",
      1.675
@@ -225,6 +221,10 @@
     [
      "2026-10-05",
      1.851
+    ],
+    [
+     "2026-10-12",
+     1.808
     ]
    ]
   },
@@ -232,17 +232,13 @@
    "slug": "nvidia-h100",
    "label": "H100",
    "available": 2022.9,
-   "latest": 3.4,
+   "latest": 3.44,
    "first": 2.99,
    "weeks": 52,
-   "change": 0.138,
-   "providers": 41,
-   "spotRatio": 0.6,
+   "change": 0.152,
+   "providers": 40,
+   "spotRatio": 0.63,
    "series": [
-    [
-     "2025-10-06",
-     2.985
-    ],
     [
      "2025-10-13",
      2.985
@@ -450,6 +446,10 @@
     [
      "2026-10-05",
      3.49
+    ],
+    [
+     "2026-10-12",
+     3.5
     ]
    ]
   },
@@ -457,17 +457,13 @@
    "slug": "nvidia-h200",
    "label": "H200",
    "available": 2024.3,
-   "latest": 4.5,
+   "latest": 4.61,
    "first": 3.5,
    "weeks": 52,
-   "change": 0.287,
-   "providers": 33,
-   "spotRatio": 0.71,
+   "change": 0.318,
+   "providers": 34,
+   "spotRatio": 0.72,
    "series": [
-    [
-     "2025-10-06",
-     3.5
-    ],
     [
      "2025-10-13",
      3.5
@@ -675,6 +671,10 @@
     [
      "2026-10-05",
      4.629
+    ],
+    [
+     "2026-10-12",
+     4.875
     ]
    ]
   },
@@ -682,17 +682,13 @@
    "slug": "nvidia-b200",
    "label": "B200",
    "available": 2025.1,
-   "latest": 6.65,
+   "latest": 7.02,
    "first": 5.7,
    "weeks": 52,
-   "change": 0.165,
-   "providers": 19,
-   "spotRatio": 0.7,
+   "change": 0.23,
+   "providers": 20,
+   "spotRatio": 0.66,
    "series": [
-    [
-     "2025-10-06",
-     5.74
-    ],
     [
      "2025-10-13",
      5.74
@@ -900,6 +896,10 @@
     [
      "2026-10-05",
      6.79
+    ],
+    [
+     "2026-10-12",
+     7.99
     ]
    ]
   },
@@ -907,12 +907,12 @@
    "slug": "nvidia-b300",
    "label": "B300",
    "available": 2025.8,
-   "latest": 8.34,
+   "latest": 8.62,
    "first": 5.22,
-   "weeks": 47,
-   "change": 0.597,
+   "weeks": 48,
+   "change": 0.651,
    "providers": 15,
-   "spotRatio": 0.64,
+   "spotRatio": 0.62,
    "series": [
     [
      "2025-11-10",
@@ -1105,78 +1105,82 @@
     [
      "2026-10-05",
      8.99
+    ],
+    [
+     "2026-10-12",
+     8.99
     ]
    ]
   }
  ],
  "ladder": {
-  "annualDecline": 0.246,
+  "annualDecline": 0.251,
   "r2": 0.98,
   "points": [
    {
     "label": "A100",
     "age": 6.3,
-    "price": 1.77
+    "price": 1.78
    },
    {
     "label": "H100",
     "age": 3.8,
-    "price": 3.4
+    "price": 3.44
    },
    {
     "label": "H200",
     "age": 2.5,
-    "price": 4.5
+    "price": 4.61
    },
    {
     "label": "B200",
     "age": 1.7,
-    "price": 6.65
+    "price": 7.02
    },
    {
     "label": "B300",
     "age": 1,
-    "price": 8.34
+    "price": 8.62
    }
   ],
-  "intercept": 2.3224,
-  "slope": -0.2818
+  "intercept": 2.3702,
+  "slope": -0.289
  },
  "terms": [
   {
    "months": 1,
-   "price": 3.25,
-   "discount": 0.038,
+   "price": 3.26,
+   "discount": 0.037,
    "providers": 12
   },
   {
    "months": 3,
-   "price": 3.32,
-   "discount": 0.016,
+   "price": 3.33,
+   "discount": 0.017,
    "providers": 6
   },
   {
    "months": 6,
    "price": 3.09,
-   "discount": 0.085,
+   "discount": 0.089,
    "providers": 10
   },
   {
    "months": 12,
-   "price": 3.11,
-   "discount": 0.08,
+   "price": 3.16,
+   "discount": 0.067,
    "providers": 14
   },
   {
    "months": 24,
-   "price": 2.71,
-   "discount": 0.197,
+   "price": 2.72,
+   "discount": 0.199,
    "providers": 4
   },
   {
    "months": 36,
    "price": 2.97,
-   "discount": 0.119,
+   "discount": 0.123,
    "providers": 6
   }
  ],
@@ -1186,7 +1190,7 @@
    "basis": "contract",
    "why": "Year-1 rent = the H100 1-year contract index: what a buyer of capacity actually signs.",
    "source": "contract1y",
-   "crossCheck": "Dataset 12-month reserved median $3.11 (14 providers)"
+   "crossCheck": "Dataset 12-month reserved median $3.16 (14 providers)"
   },
   "decline": {
    "value": 0.25,
