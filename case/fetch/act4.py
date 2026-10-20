@@ -52,12 +52,37 @@ def geocode(rows):
             pass
 
 
+def zcta_fallback(rows):
+    """Place addresses the geocoder missed in the county that holds most of their ZIP code's land."""
+    miss = [r for r in rows if not r.get("county_fips")]
+    if not miss:
+        return 0
+    b = get("https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt")
+    if not b:
+        return 0
+    best = {}
+    for line in b.decode("utf-8", "replace").splitlines()[1:]:
+        f = line.split("|")
+        if len(f) < 17 or not f[1]:
+            continue
+        z, cty, name, land = f[1], f[9], f[10], int(f[16] or 0)
+        if z not in best or land > best[z][2]:
+            best[z] = (cty, name, land)
+    n = 0
+    for r in miss:
+        if r["zip"] in best:
+            r["county_fips"], r["county"] = best[r["zip"]][0], best[r["zip"]][1] + " (by ZIP)"
+            n += 1
+    return n
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     s = {"ran_at": datetime.datetime.utcnow().isoformat() + "Z"}
     try:
         rows = npi()
         geocode([r for r in rows if r["taxonomy_code"].startswith("3336")])
+        s["zip_fallback"] = zcta_fallback(rows)
         cols = ["npi", "name", "status", "enumerated", "taxonomy_code", "taxonomy", "address", "city", "state", "zip", "phone", "county_fips", "county", "lat", "lon"]
         with open(f"{OUT}/weis_npi.csv", "w", newline="") as f:
             w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore"); w.writeheader(); w.writerows(rows)
