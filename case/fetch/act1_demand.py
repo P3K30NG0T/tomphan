@@ -16,11 +16,11 @@ def partd():
     if not hits:
         return info
     out = []
-    for dist in hits[0].get("distribution", []):
+    for dist in [x for h in hits for x in h.get("distribution", [])]:
         url = dist.get("accessURL") or dist.get("downloadURL") or ""
         if "data-api/v1/dataset" not in url:
             continue
-        year = (dist.get("temporal") or dist.get("title") or "")
+        year = str(dist.get("temporal") or dist.get("title") or "")[-40:]
         api = url.split("?")[0].rstrip("/")
         if not api.endswith("/data"):
             api += "/data" if "/data" not in api.split("/dataset/")[1] else ""
@@ -47,7 +47,7 @@ def partd():
         w = csv.DictWriter(f, fieldnames=["period", "rows", "claims", "fills_30day", "drug_cost_usd", "api"])
         w.writeheader(); w.writerows(out)
     info["years"] = [r["period"] for r in out]
-    info["dataset_title"] = hits[0].get("title")
+    info["dataset_titles"] = [h.get("title") for h in hits]
     return info
 
 def census_probe():
