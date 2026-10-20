@@ -1,0 +1,591 @@
+{
+ "ran_at": "2026-10-20T06:29:09.897773Z",
+ "qcew": {
+  "annual_rows": 96,
+  "county_rows": 4305,
+  "quarter_rows": 232
+ },
+ "cbp": {
+  "rows": 0
+ },
+ "partd": {
+  "error": "dataset not found in catalog"
+ },
+ "requests": [
+  {
+   "url": "https://data.bls.gov/cew/data/api/2001/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2002/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2003/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2004/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2005/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2006/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2007/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2008/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2009/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2010/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2011/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2012/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2013/a/industry/446110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2014/a/industry/446110.csv",
+   "status": 200,
+   "bytes": 557323,
+   "sha256": "ae697435e5bc3091",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2015/a/industry/446110.csv",
+   "status": 200,
+   "bytes": 558409,
+   "sha256": "e8f32625d2ca30ba",
+   "s": 0.2
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2016/a/industry/446110.csv",
+   "status": 200,
+   "bytes": 557752,
+   "sha256": "92fe04ab6c5e319f",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2017/a/industry/446110.csv",
+   "status": 200,
+   "bytes": 557654,
+   "sha256": "ed6feb649c90f173",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2018/a/industry/446110.csv",
+   "status": 200,
+   "bytes": 556025,
+   "sha256": "cf6a52891a95e6ee",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2019/a/industry/446110.csv",
+   "status": 200,
+   "bytes": 556738,
+   "sha256": "45fe0231897dd042",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2019/1/industry/446110.csv",
+   "status": 200,
+   "bytes": 591192,
+   "sha256": "02c1034543d125dc",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2019/2/industry/446110.csv",
+   "status": 200,
+   "bytes": 590130,
+   "sha256": "7115758127282405",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2019/3/industry/446110.csv",
+   "status": 200,
+   "bytes": 589312,
+   "sha256": "cd0768571f35c5c0",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2019/4/industry/446110.csv",
+   "status": 200,
+   "bytes": 586131,
+   "sha256": "9763a3c8c46fa16f",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2020/a/industry/446110.csv",
+   "status": 200,
+   "bytes": 556628,
+   "sha256": "b6f3706e65f52124",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2020/1/industry/446110.csv",
+   "status": 200,
+   "bytes": 593108,
+   "sha256": "0bab019cb70a5fe3",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2020/2/industry/446110.csv",
+   "status": 200,
+   "bytes": 592152,
+   "sha256": "22bd7efc7d411940",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2020/3/industry/446110.csv",
+   "status": 200,
+   "bytes": 589952,
+   "sha256": "53a169274aee76cb",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2020/4/industry/446110.csv",
+   "status": 200,
+   "bytes": 583341,
+   "sha256": "69d7cc12f08119d8",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2021/a/industry/446110.csv",
+   "status": 200,
+   "bytes": 553046,
+   "sha256": "6a9f28280f612219",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2021/1/industry/446110.csv",
+   "status": 200,
+   "bytes": 591080,
+   "sha256": "5a60b26c592a53d7",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2021/2/industry/446110.csv",
+   "status": 200,
+   "bytes": 583981,
+   "sha256": "eec1b27d34028e60",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2021/3/industry/446110.csv",
+   "status": 200,
+   "bytes": 583362,
+   "sha256": "573358c3d66ba467",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2021/4/industry/446110.csv",
+   "status": 200,
+   "bytes": 580139,
+   "sha256": "48d5a811b9f2bb4e",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2022/a/industry/456110.csv",
+   "status": 200,
+   "bytes": 494635,
+   "sha256": "d69fba89b089920d",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2022/1/industry/456110.csv",
+   "status": 200,
+   "bytes": 524061,
+   "sha256": "50a2ca75c1d5e3e0",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2022/2/industry/456110.csv",
+   "status": 200,
+   "bytes": 522646,
+   "sha256": "b022b721ac382a6d",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2022/3/industry/456110.csv",
+   "status": 200,
+   "bytes": 522153,
+   "sha256": "ac85678bc4fe0429",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2022/4/industry/456110.csv",
+   "status": 200,
+   "bytes": 520673,
+   "sha256": "93753d5ecb0840cf",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2023/a/industry/456110.csv",
+   "status": 200,
+   "bytes": 555782,
+   "sha256": "c9cc8107288644a8",
+   "s": 0.2
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2023/1/industry/456110.csv",
+   "status": 200,
+   "bytes": 588393,
+   "sha256": "2ea31166d0a12860",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2023/2/industry/456110.csv",
+   "status": 200,
+   "bytes": 585344,
+   "sha256": "7ab62a2b50292e29",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2023/3/industry/456110.csv",
+   "status": 200,
+   "bytes": 587863,
+   "sha256": "b73bd833b1e09e73",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2023/4/industry/456110.csv",
+   "status": 200,
+   "bytes": 583949,
+   "sha256": "c4eed89fbeabccbc",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2024/a/industry/456110.csv",
+   "status": 200,
+   "bytes": 542794,
+   "sha256": "5fdd42b1f4cece6a",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2024/1/industry/456110.csv",
+   "status": 200,
+   "bytes": 580922,
+   "sha256": "1a47ae04c70e58f4",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2024/2/industry/456110.csv",
+   "status": 200,
+   "bytes": 579340,
+   "sha256": "1f0574d36b7290c7",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2024/3/industry/456110.csv",
+   "status": 200,
+   "bytes": 577632,
+   "sha256": "d322ef0d9e0bac18",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2024/4/industry/456110.csv",
+   "status": 200,
+   "bytes": 575757,
+   "sha256": "b9f8118e7c5f881f",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2025/a/industry/456110.csv",
+   "status": 200,
+   "bytes": 472613,
+   "sha256": "72834734973a0a3f",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2025/1/industry/456110.csv",
+   "status": 200,
+   "bytes": 580732,
+   "sha256": "34b939992901850f",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2025/2/industry/456110.csv",
+   "status": 200,
+   "bytes": 574228,
+   "sha256": "7dcece0b5b5ca4a5",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2025/3/industry/456110.csv",
+   "status": 200,
+   "bytes": 553236,
+   "sha256": "7a79937997da99ed",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2025/4/industry/456110.csv",
+   "status": 200,
+   "bytes": 554174,
+   "sha256": "52fffaaa2272ad04",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2026/a/industry/456110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2026/1/industry/456110.csv",
+   "status": 200,
+   "bytes": 505443,
+   "sha256": "ebcbd2aac88ec87b",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2026/2/industry/456110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2026/3/industry/456110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2026/4/industry/456110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://api.census.gov/data/2012/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2012=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.4
+  },
+  {
+   "url": "https://api.census.gov/data/2012/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2012=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2013/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2012=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2013/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2012=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2014/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2012=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2014/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2012=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2015/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2012=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2015/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2012=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2016/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2012=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2016/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2012=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2017/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2017/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2018/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2018/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2019/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2019/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2020/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2020/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2021/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2021/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2022/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2022/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2017=446110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 1.4
+  },
+  {
+   "url": "https://api.census.gov/data/2023/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2022=456110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2023/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2022=456110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2024/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2022=456110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2024/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2022=456110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2025/cbp?get=ESTAB,EMP,PAYANN&for=us:*&NAICS2022=456110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://api.census.gov/data/2025/cbp?get=ESTAB,EMP,PAYANN&for=state:42,24,36,51,34,10,54&NAICS2022=456110",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.2
+  },
+  {
+   "url": "https://data.cms.gov/data.json",
+   "status": 200,
+   "bytes": 17903889,
+   "sha256": "ad4cce080415dd98",
+   "s": 0.3
+  }
+ ]
+}
