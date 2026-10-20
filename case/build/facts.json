@@ -1,0 +1,96 @@
+{
+  "as_of": "2026-10-20",
+  "timeline": [
+    {"date": "2023-10", "label": "Oct 2023", "event": "Rite Aid, then the third-largest US drugstore chain, files for bankruptcy with more than $4 billion of debt and 2,111 stores.", "why": "A household name cannot pay its bills.", "src": "hfn"},
+    {"date": "2024-09", "label": "Sep 2024", "event": "It leaves bankruptcy owned by its lenders, after cutting about $2 billion of debt and closing more than 500 stores.", "why": "Getting smaller did not fix the business.", "src": "hfn"},
+    {"date": "2025-03", "label": "Mar 2025", "event": "GoodRx finds 48.4 million Americans, about 1 in 7, live in a pharmacy desert, where most people must drive more than 15 minutes to reach their nearest pharmacies.", "why": "Access was already thin in many places.", "src": "goodrx"},
+    {"date": "2025-05", "label": "May 2025", "event": "Rite Aid files again with about 1,250 stores, this time to close them all and sell its customers' prescription records. CVS plans 271 closures that year, Walgreens 500.", "why": "The leaders are shrinking too.", "src": "abc"},
+    {"date": "2025-08", "label": "Aug 2025", "event": "The last Rite Aid pharmacy in Pennsylvania closes; CVS takes the records of 173 of them there and 42 in New Jersey. Walgreens is taken private by Sycamore Partners.", "why": "Weis's main state is hit directly.", "src": "inquirer"},
+    {"date": "2025-10", "label": "Oct 2025", "event": "The final 89 Rite Aid stores close after 63 years. CVS says it now serves more than 9 million former Rite Aid patients, from the records of 626 pharmacies in 15 states.", "why": "Most patients were handed to a nearby rival.", "src": "pymnts"},
+    {"date": "2025-12", "label": "2025", "event": "Weis buys the prescription records of 12 competitor pharmacies (its annual report does not name the sellers).", "why": "Weis has started to collect patients, in small numbers.", "src": "weis10k"},
+    {"date": "2026-01", "label": "Jan 2026", "event": "Medicare's first negotiated drug prices take effect. Weis says they cut its pharmacy revenue by $18.2 million in the first half of 2026.", "why": "A new squeeze on revenue per prescription.", "src": "weisq2"},
+    {"date": "2026-04", "label": "Apr 2026", "event": "IQVIA reports Americans used a record 210 billion days of medicine in 2025, up 13% in five years.", "why": "Demand keeps growing.", "src": "iqvia"}
+  ],
+  "act1_context": {
+    "rite_aid_stores_at_filing": 2111,
+    "cvs_closed_2021_2024": 900,
+    "cvs_closures_2025_plan": 271,
+    "walgreens_closure_plan": 1200,
+    "iqvia_days_bn_2025": 210,
+    "iqvia_days_5y_growth": 0.13,
+    "iqvia_spend_bn_2025": 606,
+    "iqvia_spend_growth": 0.106,
+    "ftc_top3_share": 0.8,
+    "ftc_rx_bn_2023": 6.6,
+    "ncpa_considering_closing_2025": 0.303,
+    "cvs_rite_aid_patients_m": 9,
+    "cvs_rite_aid_pharmacies": 626,
+    "rite_aid_pa_stores_may2025": 345,
+    "cvs_pa_files": 173
+  },
+  "act3": {
+    "ncpa": [
+      {"year": 2023, "stores": 19432, "rx_per_store": 59644, "market_bn": 94.9, "rx_share": 0.96, "gross_margin": 0.197, "src": "ncpa2024"},
+      {"year": 2024, "stores": 18984, "rx_per_store": 67601, "market_bn": 103, "rx_share": 0.96, "gross_margin": null, "src": "ncpa2025"},
+      {"year": 2025, "stores": 18960, "rx_per_store": 65795, "market_bn": 103, "rx_share": 0.96, "gross_margin": null, "src": "ncpa2026"}
+    ],
+    "walgreens": [
+      {"fy": 2023, "sales_bn": 110.3, "adj_op_income_bn": 3.69},
+      {"fy": 2024, "sales_bn": 115.8, "adj_op_income_bn": 2.17, "rx_30day_bn": 1.2, "locations": 8560, "pharmacy_share": 0.77, "third_party_paid": 0.97}
+    ],
+    "cvs_2025": {"rx_30day_bn": 1.8, "retail_share": 0.285, "locations": 9000, "closed_2025": 243, "q4_same_store_rx": 0.10},
+    "calc_defaults": {
+      "rx_per_day": 180, "rx_per_day_src": "NCPA 2026 Digest: 65,795 prescriptions per independent pharmacy in 2025, divided by 365",
+      "revenue_per_rx": 78.6, "revenue_per_rx_src": "NCPA 2024 Digest: $94.9 billion market, 96% from prescriptions, 19,432 stores x 59,644 prescriptions (2023)",
+      "gross_margin": 0.197, "gross_margin_src": "NCPA 2024 Digest: 19.7% gross margin in 2023, lowest in ten years",
+      "payroll": 600000, "payroll_src": "BLS QCEW 2025: total pay in pharmacies and drug stores divided by the number of them",
+      "other_costs": 250000, "other_costs_src": "Assumption: rent, utilities, insurance, software, delivery. Not published; adjust it"
+    }
+  },
+  "act4": {
+    "fin": [
+      {"year": 2021, "cash": 86.0, "securities": 205.7, "capex": 151.8, "ocf": 227.7, "op_income": 146.7},
+      {"year": 2022, "cash": 158.0, "securities": 186.4, "capex": 122.2, "ocf": 218.0, "op_income": 157.1},
+      {"year": 2023, "net_sales": 4696.95, "pharmacy_share": 0.112, "op_income": 133.1, "net_income": 100.9, "gross_margin": 0.250, "cash": 184.2, "securities": 226.0, "capex": 104.0, "ocf": 201.6, "da": 98.0},
+      {"year": 2024, "net_sales": 4773.88, "pharmacy_share": 0.125, "op_income": 126.4, "net_income": 106.0, "gross_margin": 0.251, "cash": 190.3, "securities": 192.0, "capex": 161.3, "ocf": 187.5, "da": 102.8},
+      {"year": 2025, "net_sales": 4939.37, "pharmacy_share": 0.136, "op_income": 113.7, "net_income": 93.7, "gross_margin": 0.251, "cash": 117.1, "securities": 97.1, "capex": 202.4, "ocf": 207.2, "da": 112.8}
+    ],
+    "fin_note": "$ millions. 2023-2025 operating and net income as restated in the fiscal 2025 annual report; 2021-2022 operating income as first reported.",
+    "h1_2026": {"revenue_bn": 2.53, "revenue_growth": 0.046, "op_income": 64.8, "op_income_q1": 35.7, "op_income_q2": 29.1, "net_income": 50.7, "net_income_prior": 44.8, "ira_pharmacy_revenue_hit": 18.2, "cash": 103.5, "securities": 104.5, "comp_sales": 0.022},
+    "credit_line": {"committed": 30.0, "discretionary": 70.0},
+    "employees": 22000,
+    "rx_files_2025": 12,
+    "single_segment": true
+  },
+  "sources": {
+    "qcew": {"title": "BLS Quarterly Census of Employment and Wages (pharmacies and drug stores, NAICS 446110/456110)", "url": "https://www.bls.gov/cew/"},
+    "partd": {"title": "CMS Medicare Part D Prescribers by Geography and Drug", "url": "https://data.cms.gov/provider-summary-by-type-of-service/medicare-part-d-prescribers/medicare-part-d-prescribers-by-geography-and-drug"},
+    "svi": {"title": "CDC/ATSDR Social Vulnerability Index 2022 (county)", "url": "https://www.atsdr.cdc.gov/place-health/php/svi/index.html"},
+    "places": {"title": "CDC PLACES: Local Data for Better Health, County Data, 2025 release", "url": "https://data.cdc.gov/500-Cities-Places/PLACES-Local-Data-for-Better-Health-County-Data-20/swc5-untb"},
+    "oews": {"title": "BLS Occupational Employment and Wage Statistics (pharmacists, pharmacy technicians), May 2025", "url": "https://www.bls.gov/oes/"},
+    "npi": {"title": "CMS NPPES NPI Registry (pharmacies registered to Weis Markets)", "url": "https://npiregistry.cms.hhs.gov/"},
+    "geocoder": {"title": "US Census Geocoder and ZCTA-county relationship file", "url": "https://geocoding.geo.census.gov/"},
+    "atlas": {"title": "US Atlas TopoJSON (county shapes from the Census Bureau)", "url": "https://github.com/topojson/us-atlas"},
+    "hfn": {"title": "Healthcare Finance News: Rite Aid comes out of Chapter 11", "url": "https://www.healthcarefinancenews.com/news/rite-aid-comes-out-chapter-11-bankruptcy"},
+    "abc": {"title": "ABC7: Rite Aid closes all remaining stores after 63 years", "url": "https://abc7ny.com/post/rite-aid-closes-remaining-stores-more-60-years-business/17937848/"},
+    "pymnts": {"title": "PYMNTS: CVS says it gained 9 million former Rite Aid customers", "url": "https://www.pymnts.com/acquisitions/2025/cvs-pharmacy-says-it-gained-9-million-former-rite-aid-customers/"},
+    "inquirer": {"title": "Philadelphia Inquirer: Rite Aid pharmacies closed in Pennsylvania and New Jersey", "url": "https://www.inquirer.com/business/health/rite-aid-pharmacies-closed-pennsylvania-new-jersey-20250823.html"},
+    "cvs271": {"title": "Retail TouchPoints: CVS plans to close 271 stores in 2025", "url": "https://www.retailtouchpoints.com/news/cvs-plans-to-close-271-stores-in-2025-as-part-of-multi-year-savings-plan/152134/"},
+    "wba1200": {"title": "Walgreens fiscal 2024 results (8-K): about 1,200 closures over three years", "url": "https://www.sec.gov/Archives/edgar/data/1618921/000119312524237203/d870298dex991.htm"},
+    "wba10k": {"title": "Walgreens Boots Alliance Form 10-K, fiscal 2024", "url": "https://www.sec.gov/Archives/edgar/data/1618921/000161892124000084/wba-20240831.htm"},
+    "sycamore": {"title": "MarketBeat: Sycamore completes Walgreens take-private", "url": "https://www.marketbeat.com/articles/sycamore-partners-finishes-deal-to-take-drugstore-chain-walgreens-private-2025-08-28"},
+    "cvs10k": {"title": "CVS Health Form 10-K, fiscal 2025", "url": "https://www.sec.gov/Archives/edgar/data/64803/000006480326000010/cvs-20251231.htm"},
+    "cvsq4": {"title": "TIKR: CVS Health Q4 2025 earnings", "url": "https://www.tikr.com/blog/cvs-health-q4-2025-earnings-strong-pharmacy-numbers-one-big-insurance-drag"},
+    "goodrx": {"title": "GoodRx Research: pharmacy deserts", "url": "https://www.goodrx.com/healthcare-access/research/many-americans-lack-convenient-access-to-pharmacies"},
+    "iqvia": {"title": "IQVIA Institute: US Medicine Use Trends 2026", "url": "https://www.iqvia.com/insights/the-iqvia-institute/reports/us-medicine-use-trends-2026"},
+    "ftc": {"title": "Arnold & Porter: FTC interim staff report on PBMs (July 2024)", "url": "https://www.arnoldporter.com/en/perspectives/advisories/2024/07/ftc-interim-staff-report-on-prescription-drug-middlemen"},
+    "ncpa": {"title": "NCPA: Independents closing, 2025", "url": "https://ncpa.org/sites/default/files/2026-01/IndependentsClosing_2025FlyerEdit_0.pdf"},
+    "ncpa2024": {"title": "HME News: NCPA 2024 Digest (2023 data)", "url": "https://hmenews.com/article/ncpa-report-shows-ominous-amount-of-pressure"},
+    "ncpa2025": {"title": "NCPA: 2025 Digest report (2024 data)", "url": "https://ncpa.org/newsroom/news-releases/2025/10/19/ncpa-releases-2025-digest-report"},
+    "ncpa2026": {"title": "Pharmacy Times: NCPA 2026 Digest report (2025 data)", "url": "https://www.pharmacytimes.com/view/ncpa-releases-2026-digest-report"},
+    "weis10k": {"title": "Weis Markets Form 10-K, fiscal 2025", "url": "https://www.sec.gov/Archives/edgar/data/105418/000010541826000024/wmk-20251227x10k.htm"},
+    "weisxbrl": {"title": "SEC XBRL company facts for Weis Markets (cash, securities, capex, cash flow)", "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000105418/us-gaap/PaymentsToAcquirePropertyPlantAndEquipment.json"},
+    "weisq2": {"title": "Weis Markets second quarter 2026 results", "url": "https://www.weismarkets.com/weis-markets-reports-second-quarter-2026-results"},
+    "iqviaa": {"title": "IQVIA Institute: US Medicine Use Trends 2026", "url": "https://www.iqvia.com/insights/the-iqvia-institute/reports/us-medicine-use-trends-2026"}
+  }
+}

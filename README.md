@@ -1,45 +1,29 @@
 # tomphan.
 
-Portfolio of Tom Phan (Phan Nguyen Hong Quang). One business question, answered on open data:
-**is buying AI GPUs to rent out still a good business, and for whom?**
+Portfolio of Tom Phan (Phan Nguyen Hong Quang). One real business decision, followed on public data:
+**after Rite Aid, what should Weis Markets do about pharmacy deserts?**
 
-Live: https://tomphann.vercel.app
+Live: https://tomphann.vercel.app · Independent analysis on public data; not affiliated with Weis Markets; not investment advice.
 
-## The case in three steps
-1. **Market research** (`#research`): rents by GPU model, the price ladder (rent lost per year of age), contract prices, CoreWeave benchmarks, Southeast Asia capacity. Built from `data/market.json`.
-2. **Financial evaluation** (`#model`): NPV, IRR, payback, break-even rent and capex for one H100, scenarios, sensitivity, and a recommendation for four perspectives. Model in `assets/model.js`; Excel version in `downloads/`.
-3. **Agent harness** (`#agent`): the pipeline in `harness/` that fetches, checks and computes the data above, plus an agent you can question (`api/copilot.js`).
-
-## The research harness
-`harness/run.mjs` runs on GitHub Actions every Monday and on demand (Actions → Research harness → Run workflow):
-
-| Step | Tool | What it does |
+## The case in seven acts
+| Act | Question | Status |
 | --- | --- | --- |
-| 1 | `fetch_gpu_prices` | Downloads the GetDeploying GPU price dataset (CC BY 4.0) for A100, H100, H200, B200, B300 |
-| 2 | `fetch_sec_facts` | Pulls CoreWeave revenue, D&A, operating income and capex from SEC XBRL (falls back to a recorded copy if SEC is unreachable) |
-| 3 | `run_checks` | Schema, units, coverage, freshness, week-on-week jumps, cross-source agreement |
-| 4 | `market_stats` | Latest rents, yearly change, contract-term prices, price-ladder fit |
-| 5 | `set_assumptions` | Turns evidence into the model's base case; analyst inputs are labelled |
-| 6 | `run_model + reconcile` | Runs the model in JavaScript and in `harness/reconcile.py`; blocks if they differ by more than $1 |
-| 7 | `draft_findings` | Optional: Claude drafts key findings; any number not in the evidence is rejected |
-| 8 | `write_outputs` | Publishes `data/market.json` only if no blocking check failed; always writes `data/runlog.json` and `data/runs.json` |
+| 1 · The shock | One-time event or lasting shift? | Published |
+| 2 · Demand | Who is left behind, and where? | Published |
+| 3 · Economics | Why does the old model lose money? | Published |
+| 4 · Weis | What does Weis have to win with? | Published |
+| 5 · New model | Can technology change the cost, and where first? | In progress |
+| 6 · The money | Which of three options is worth it? | In progress |
+| 7 · Decision | What to do, how to track it, when to stop? | In progress |
 
-Sources and analyst inputs live in `harness/sources.mjs`.
+## How the data flows
+1. `case/fetch/*.py` download open data on GitHub Actions (Actions → Case data fetch → Run workflow, input `act1`, `act1_demand`, `act2` or `act4`). Files and a request log land in `case/data/`.
+2. `case/build/facts.json` holds facts from filings and reports, each with its source link.
+3. `python3 case/build/build.py` writes `data/case.json`, the only file the site reads.
+4. `python3 case/build/excel.py` writes `downloads/pharmacy-deserts-data.xlsx` (recalculate in Excel or LibreOffice to cache formula values).
+5. Map shapes: `NODE_PATH=<dir with us-atlas, topojson-client, d3-geo> node case/build/geo.mjs`, then copy `case/data/geo_counties.json` to `data/geo.json`.
 
-## Deploy (Vercel)
-Framework preset **Other**, no build command. Environment variables (Settings → Environment Variables):
-- `ANTHROPIC_API_KEY`: turns on the live agent on `#agent` (otherwise sample mode). Set a monthly spend limit on the key in the Anthropic Console.
-- Optional: `COPILOT_DAILY_CAP` (default 300), `COPILOT_PER_IP_HOUR` (default 8), `COPILOT_MODEL` (default `claude-haiku-4-5-20251001`).
+## Site
+Static HTML/CSS/JS, no build step; Vercel framework preset **Other**. Pages: `index.html` + `assets/app.js` (all act pages), `assets/charts.js`, `assets/map.js`, `assets/style.css`.
 
-For agent-drafted findings in the weekly run, add the same key as a GitHub secret named `ANTHROPIC_API_KEY` (Settings → Secrets and variables → Actions).
-
-## Add later, no code changes
-- `assets/portrait.jpg`: a square photo; it replaces the "TP" circle.
-- `resume.pdf` in the repo root: the Résumé links appear on their own.
-
-## Change the site
-Vercel redeploys on every commit to `main`. Small text edits: open the file on github.com, click the pencil, commit.
-Page text: `index.html`. Exhibit wording: `assets/research.js`. Recommendations: `assets/modelpage.js`. Agent sample questions: `assets/copilot.js`. Colors and fonts: top of `assets/style.css`.
-Rebuild the Excel file after a data refresh: `python3 scripts/build_excel.py`, then recalculate in Excel or LibreOffice.
-
-Independent analysis on open data. Not investment advice. GPU price data: GetDeploying (getdeploying.com), CC BY 4.0.
+Add later, no code changes: `assets/portrait.jpg` (square photo) and `resume.pdf` in the repo root.

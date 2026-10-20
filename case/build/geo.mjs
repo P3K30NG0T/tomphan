@@ -20,5 +20,16 @@ const out = {
   inner: r(path(mesh(topo, topo.objects.counties, (a, b) => a !== b && ST.has(String(a.id).slice(0, 2)) && ST.has(String(b.id).slice(0, 2))))),
   proj: { rotate: [77.5, 0], parallels: [37, 43], scale: proj.scale(), translate: proj.translate() }
 };
+// Weis pharmacy points: geocoded address, or the county centre when only the ZIP placed it
+const parse = l => { const o = []; let cur = "", q = false; for (const ch of l) { if (ch === '"') q = !q; else if (ch === "," && !q) { o.push(cur); cur = ""; } else cur += ch; } o.push(cur); return o; };
+const lines = fs.readFileSync("case/data/act4/weis_npi.csv", "utf8").trim().split(/\r?\n/);
+const head = parse(lines[0]);
+const col = k => head.indexOf(k);
+const cent = Object.fromEntries(out.counties.map(c => [c.fips, c.c]));
+out.weis = lines.slice(1).map(parse).filter(f => f[col("taxonomy_code")].startsWith("3336")).map(f => {
+  const lat = +f[col("lat")], lon = +f[col("lon")], fips = (f[col("county_fips")] || "").padStart(5, "0");
+  const p = lat && lon ? proj([lon, lat]) : cent[fips];
+  return p ? { npi: f[col("npi")], fips, x: +p[0].toFixed(1), y: +p[1].toFixed(1), exact: !!(lat && lon) } : null;
+}).filter(Boolean);
 fs.writeFileSync("case/data/geo_counties.json", JSON.stringify(out));
-console.log(out.counties.length, "counties", out.states.length, "states", (JSON.stringify(out).length / 1024).toFixed(0) + " KB");
+console.log(out.weis.length, "weis points", out.counties.length, "counties", out.states.length, "states", (JSON.stringify(out).length / 1024).toFixed(0) + " KB");

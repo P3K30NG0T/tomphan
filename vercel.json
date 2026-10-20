@@ -1,5 +1,0 @@
-{
-  "functions": {
-    "api/copilot.js": { "includeFiles": "data/market.json" }
-  }
-}

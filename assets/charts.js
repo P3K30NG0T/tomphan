@@ -1,171 +1,120 @@
-// tomphan. — hand-rolled SVG charts. Colors come from CSS tokens (--s1..--s5, --pos, --neg, --line, --ink, --muted),
-// so every chart follows the page theme. Marks carry data-tip for the shared hover tooltip.
+// tomphan. — hand-rolled SVG charts. Colors come from CSS tokens so every chart follows the page theme.
+// Marks carry data-tip for the shared hover tooltip (multi-line with \n).
 import { esc } from "./fmt.js";
 
 const niceStep = range => { const raw = range / 5, p = Math.pow(10, Math.floor(Math.log10(raw || 1))); const f = raw / p; return (f < 1.5 ? 1 : f < 3 ? 2 : f < 7 ? 5 : 10) * p; };
 export function ticks(lo, hi) { const st = niceStep(hi - lo || 1); const out = []; for (let v = Math.floor(lo / st) * st; v <= hi + 1e-9; v += st) out.push(+v.toFixed(6)); if (out[out.length - 1] < hi) out.push(+(out[out.length - 1] + st).toFixed(6)); return out; }
-const kfmt = v => (v < 0 ? "−" : "") + "$" + (Math.abs(v) >= 1000 ? (Math.abs(v) / 1000).toFixed(Math.abs(v) % 1000 === 0 ? 0 : 1) + "k" : Math.abs(v).toFixed(Math.abs(v) < 10 && v % 1 ? 2 : 0));
 const tip = s => `data-tip="${esc(s)}"`;
-const grid = (x1, x2, y, zero) => `<line x1="${x1}" x2="${x2}" y1="${y}" y2="${y}" class="${zero ? "ax0" : "gl"}"/>`;
+const gl = (x1, x2, y, zero) => `<line x1="${x1}" x2="${x2}" y1="${y}" y2="${y}" class="${zero ? "ax0" : "gl"}"/>`;
+const n0 = v => Math.round(v).toLocaleString("en-US");
 
-/* Multi-series line chart with end labels and a hover crosshair (wired by attachLineHover). */
-export function lineChart({ series, w = 680, h = 300, yFmt = v => `$${v.toFixed(2)}`, id = "lc" }) {
-  const m = { l: 48, r: 92, t: 12, b: 28 };
-  const all = series.flatMap(s => s.points.map(p => p[1]).filter(v => v !== null));
-  const tk = ticks(0, Math.max(...all) * 1.05); const y1 = tk[tk.length - 1];
-  const dates = series[0].points.map(p => p[0]);
-  const X = i => m.l + (w - m.l - m.r) * (i / (dates.length - 1));
-  const Y = v => m.t + (h - m.t - m.b) * (1 - v / y1);
-  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Weekly rental prices by GPU model" data-chart="${id}">`;
-  tk.forEach(t => { s += grid(m.l, w - m.r, Y(t), t === 0) + `<text x="${m.l - 8}" y="${Y(t) + 4}" text-anchor="end">${yFmt(t)}</text>`; });
-  const months = []; dates.forEach((d, i) => { const mo = d.slice(0, 7); if (!months.length || months[months.length - 1].mo !== mo) months.push({ mo, i }); });
-  months.filter((_, k) => k % 2 === 0).forEach(({ mo, i }) => { s += `<text x="${X(i)}" y="${h - 8}" text-anchor="middle">${new Date(mo + "-01T00:00:00Z").toLocaleDateString("en-GB", { month: "short", year: "2-digit", timeZone: "UTC" })}</text>`; });
-  // end labels, nudged apart
-  const lastOf = sr => { for (let i = sr.points.length - 1; i >= 0; i--) if (sr.points[i][1] !== null) return [i, sr.points[i][1]]; return [0, 0]; };
-  const ends = series.map((sr, k) => ({ k, y: Y(lastOf(sr)[1]), label: `${sr.label} ${yFmt(lastOf(sr)[1])}` })).sort((a, b) => a.y - b.y);
-  for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 14) ends[i].y = ends[i - 1].y + 14;
+/* Line chart over categorical x (quarters, years). series: [{label, values:[], strong}], events: [{i, n, label}] */
+export function lineChart({ labels, series, w = 720, h = 320, yFmt = n0, yMin = null, yMax = null, every = 1, xFmt = l => l, highlightFrom = null, events = [], endFmt = null, aria = "Line chart" }) {
+  const m = { l: 60, r: 150, t: events.length ? 34 : 14, b: 30 };
+  const all = series.flatMap(s => s.values.filter(v => v !== null && v !== undefined));
+  const tk = ticks(yMin ?? Math.min(...all), yMax ?? Math.max(...all)); const y0 = tk[0], y1 = tk[tk.length - 1];
+  const X = i => m.l + (w - m.l - m.r) * (i / (labels.length - 1));
+  const Y = v => m.t + (h - m.t - m.b) * (1 - (v - y0) / (y1 - y0));
+  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(aria)}">`;
+  tk.forEach(t => { s += gl(m.l, w - m.r, Y(t), t === y0 && y0 === 0) + `<text x="${m.l - 8}" y="${Y(t) + 4}" text-anchor="end">${yFmt(t)}</text>`; });
+  labels.forEach((l, i) => { if (i % every === 0) s += `<text x="${X(i)}" y="${h - 9}" text-anchor="middle">${esc(xFmt(l))}</text>`; });
+  events.forEach(e => {
+    s += `<line x1="${X(e.i)}" x2="${X(e.i)}" y1="${m.t - 10}" y2="${h - m.b}" class="ev"/>`;
+    s += `<circle cx="${X(e.i)}" cy="${m.t - 20}" r="9" class="ev-c" ${tip(e.label)}/><text x="${X(e.i)}" y="${m.t - 16}" text-anchor="middle" class="lbl-strong">${e.n}</text>`;
+  });
+  const ends = [];
   series.forEach((sr, k) => {
-    const pts = sr.points.map((p, i) => p[1] === null ? null : `${X(i).toFixed(1)},${Y(p[1]).toFixed(1)}`).filter(Boolean).join(" ");
-    const [li, lv] = lastOf(sr);
-    s += `<polyline points="${pts}" class="ln" style="stroke:var(--s${k + 1})${sr.strong ? ";stroke-width:2.8" : ""}"/>`;
-    s += `<circle cx="${X(li)}" cy="${Y(lv)}" r="4" class="dot" style="fill:var(--s${k + 1})"/>`;
+    const col = sr.color || (sr.strong ? "var(--s1)" : "var(--chart-2)");
+    const pts = sr.values.map((v, i) => v === null || v === undefined ? null : [X(i), Y(v)]).filter(Boolean);
+    s += `<polyline points="${pts.map(p => p.join(",")).join(" ")}" class="ln" style="stroke:${col}"/>`;
+    if (highlightFrom !== null && sr.strong) {
+      const hp = sr.values.map((v, i) => i >= highlightFrom && v !== null ? [X(i), Y(v)] : null).filter(Boolean);
+      s += `<polyline points="${hp.map(p => p.join(",")).join(" ")}" class="ln" style="stroke:var(--s1);stroke-width:3"/>`;
+    }
+    sr.values.forEach((v, i) => { if (v === null || v === undefined) return; const hot = highlightFrom === null ? sr.strong : sr.strong && i >= highlightFrom; s += `<circle cx="${X(i)}" cy="${Y(v)}" r="3.2" class="dot" style="fill:${hot ? "var(--s1)" : col}" ${tip(`${sr.label}\n${labels[i]}: ${yFmt(v)}${sr.tipExtra ? sr.tipExtra(i) : ""}`)}/>`; });
+    let li = sr.values.length - 1; while (li > 0 && (sr.values[li] === null || sr.values[li] === undefined)) li--;
+    ends.push({ y: Y(sr.values[li]), x: X(li), text: endFmt ? endFmt(sr, sr.values[li]) : `${sr.label} ${yFmt(sr.values[li])}`, strong: sr.strong });
   });
-  ends.forEach(e => { s += `<text x="${w - m.r + 8}" y="${e.y + 4}" class="lbl-strong">${esc(e.label)}</text>`; });
-  s += `<line class="xh" x1="0" x2="0" y1="${m.t}" y2="${h - m.b}" visibility="hidden"/>`;
-  s += `<rect class="hit" x="${m.l}" y="${m.t}" width="${w - m.l - m.r}" height="${h - m.t - m.b}" fill="transparent"/>`;
-  return { svg: s + "</svg>", meta: { m, w, h, dates, series } };
-}
-
-export function attachLineHover(host, meta, fmt) {
-  const svg = host.querySelector("svg"); if (!svg) return;
-  const xh = svg.querySelector(".xh"), hit = svg.querySelector(".hit"), tipEl = document.getElementById("tip");
-  const { m, w, dates, series } = meta;
-  const move = e => {
-    const r = svg.getBoundingClientRect(), sx = (e.clientX - r.left) * (w / r.width);
-    const i = Math.max(0, Math.min(dates.length - 1, Math.round((sx - m.l) / (w - m.l - m.r) * (dates.length - 1))));
-    const x = m.l + (w - m.l - m.r) * (i / (dates.length - 1));
-    xh.setAttribute("x1", x); xh.setAttribute("x2", x); xh.setAttribute("visibility", "visible");
-    tipEl.innerHTML = `<b>Week of ${esc(dates[i])}</b>` + series.map((sr, k) => `<div><i style="background:var(--s${k + 1})"></i>${esc(sr.label)} <span>${sr.points[i][1] === null ? "–" : fmt(sr.points[i][1])}</span></div>`).join("");
-    showTip(e.clientX, e.clientY);
-  };
-  hit.addEventListener("pointermove", move);
-  hit.addEventListener("pointerleave", () => { xh.setAttribute("visibility", "hidden"); hideTip(); });
-}
-
-/* Price ladder: log-scale scatter of rent vs age with the fitted decline line. */
-export function ladderChart(ladder, w = 680, h = 300) {
-  const m = { l: 56, r: 20, t: 16, b: 40 };
-  const pts = ladder.points; const maxAge = Math.ceil(Math.max(...pts.map(p => p.age)) + 0.5);
-  const yTicks = [1, 2, 4, 8, 16].filter(v => v <= Math.max(...pts.map(p => p.price)) * 1.6 && v >= 1);
-  const lo = Math.log(0.9), hi = Math.log(Math.max(...yTicks, ...pts.map(p => p.price)) * 1.15);
-  const X = a => m.l + (w - m.l - m.r) * (a / maxAge), Y = p => m.t + (h - m.t - m.b) * (1 - (Math.log(p) - lo) / (hi - lo));
-  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Rent by years on the market">`;
-  yTicks.forEach(t => { s += grid(m.l, w - m.r, Y(t)) + `<text x="${m.l - 8}" y="${Y(t) + 4}" text-anchor="end">$${t}</text>`; });
-  for (let a = 0; a <= maxAge; a++) s += `<text x="${X(a)}" y="${h - 20}" text-anchor="middle">${a}</text>`;
-  s += `<text x="${(m.l + w - m.r) / 2}" y="${h - 4}" text-anchor="middle">Years since volume availability</text>`;
-  const fit = a => Math.exp(ladder.intercept + ladder.slope * a);
-  s += `<line x1="${X(0.3)}" y1="${Y(fit(0.3))}" x2="${X(maxAge - 0.2)}" y2="${Y(fit(maxAge - 0.2))}" class="fit"/>`;
-  pts.forEach(p => {
-    s += `<circle cx="${X(p.age)}" cy="${Y(p.price)}" r="6" class="dot" style="fill:var(--s1)" ${tip(`${p.label}: $${p.price.toFixed(2)}/hr, ${p.age} years on market`)}/>`;
-    const right = p.age > maxAge - 1.5;
-    s += `<text x="${X(p.age) + (right ? -10 : 10)}" y="${Y(p.price) - 9}" text-anchor="${right ? "end" : "start"}" class="lbl-strong">${esc(p.label)} $${p.price.toFixed(2)}</text>`;
-  });
-  s += `<text x="${w - m.r}" y="${m.t + 4}" text-anchor="end" class="note">Dashed line: fitted −${Math.round(ladder.annualDecline * 100)}% per year · R² ${ladder.r2}</text>`;
+  ends.sort((a, b) => a.y - b.y); for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 16) ends[i].y = ends[i - 1].y + 16;
+  ends.forEach(e => { s += `<text x="${e.x + 10}" y="${e.y + 4}" class="${e.strong ? "lbl-strong" : "lbl"}">${esc(e.text)}</text>`; });
   return s + "</svg>";
 }
 
-/* Horizontal bars, one highlighted. rows: {label, value, sub?, strong?, tip?} */
-export function hbars(rows, { w = 680, fmt = v => `$${v.toFixed(2)}`, max = null, labelW = 230 } = {}) {
-  const rh = 34, m = { l: labelW, r: 70, t: 4, b: 4 }, h = m.t + m.b + rh * rows.length;
-  const top = max ?? Math.max(...rows.map(r => r.value)) * 1.02;
-  const X = v => m.l + (w - m.l - m.r) * (v / top);
-  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Bar chart">`;
+/* Horizontal bars that can be negative, with an optional reference line. rows: {label, sub, value, strong, tip} */
+export function divBars(rows, { w = 720, fmt = v => `${(v * 100).toFixed(1)}%`, ref = null, refLabel = "", labelW = 200, aria = "Bar chart" } = {}) {
+  const rh = 38, m = { l: labelW, r: 70, t: ref !== null ? 26 : 6, b: 6 }, h = m.t + m.b + rh * rows.length;
+  const lo = Math.min(0, ...rows.map(r => r.value), ref ?? 0), hi = Math.max(0, ...rows.map(r => r.value), ref ?? 0);
+  const X = v => m.l + (w - m.l - m.r) * ((v - lo) / (hi - lo || 1));
+  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(aria)}">`;
   rows.forEach((r, i) => {
-    const y = m.t + i * rh + 6;
-    s += `<text x="${m.l - 10}" y="${y + 13}" text-anchor="end" class="${r.strong ? "lbl-strong" : "lbl"}">${esc(r.label)}</text>`;
-    if (r.sub) s += `<text x="${m.l - 10}" y="${y + 26}" text-anchor="end" class="note">${esc(r.sub)}</text>`;
-    s += `<rect x="${m.l}" y="${y}" width="${Math.max(2, X(r.value) - m.l)}" height="18" rx="4" class="bar${r.strong ? " strong" : ""}" ${tip(r.tip || `${r.label}: ${fmt(r.value)}`)}/>`;
-    s += `<text x="${X(r.value) + 6}" y="${y + 13}" class="${r.strong ? "lbl-strong" : "lbl"}">${fmt(r.value)}</text>`;
+    const y = m.t + i * rh + 8;
+    s += `<text x="0" y="${y + 13}" class="${r.strong ? "lbl-strong" : "lbl"}">${esc(r.label)}</text>`;
+    if (r.sub) s += `<text x="${labelW - 12}" y="${y + 13}" text-anchor="end" class="note">${esc(r.sub)}</text>`;
+    const x0 = X(Math.min(0, r.value)), x1 = X(Math.max(0, r.value));
+    s += `<rect x="${x0}" y="${y}" width="${Math.max(2, x1 - x0)}" height="20" rx="4" class="bar${r.strong ? " strong" : ""}" ${tip(r.tip || `${r.label}: ${fmt(r.value)}`)}/>`;
+    s += `<text x="${r.value < 0 ? X(0) + 8 : x1 + 6}" y="${y + 14}" class="${r.strong ? "lbl-strong" : "lbl"}">${fmt(r.value)}</text>`;
   });
+  s += `<line x1="${X(0)}" x2="${X(0)}" y1="${m.t}" y2="${h - m.b}" class="ax0"/>`;
+  if (ref !== null) s += `<line x1="${X(ref)}" x2="${X(ref)}" y1="${m.t - 8}" y2="${h - m.b}" class="ev"/><text x="${X(ref)}" y="${m.t - 12}" text-anchor="middle" class="note">${esc(refLabel)}</text>`;
   return s + "</svg>";
 }
 
-/* Vertical bars (+ optional cumulative line). Negative bars use --neg. */
-export function barLineChart({ labels, bars, line, w = 640, h = 260, tips }) {
-  const m = { l: 56, r: 16, t: 18, b: 30 };
-  const all = [...bars, ...(line || []), 0];
-  const tk = ticks(Math.min(...all), Math.max(...all)); const y0 = tk[0], y1 = tk[tk.length - 1];
-  const Y = v => m.t + (h - m.t - m.b) * (1 - (v - y0) / (y1 - y0 || 1));
-  const bw = (w - m.l - m.r) / labels.length;
-  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Cash flow chart">`;
-  tk.forEach(t => { s += grid(m.l, w - m.r, Y(t), t === 0) + `<text x="${m.l - 8}" y="${Y(t) + 4}" text-anchor="end">${kfmt(t)}</text>`; });
-  bars.forEach((v, i) => {
-    const x = m.l + i * bw + bw * .22, top = Y(Math.max(v, 0)), bot = Y(Math.min(v, 0));
-    s += `<rect x="${x}" y="${top}" width="${bw * .56}" height="${Math.max(1, bot - top)}" rx="4" style="fill:var(${v < 0 ? "--c-neg" : "--c-pos"})" ${tip(tips ? tips[i] : `${labels[i]}: ${kfmt(v)}`)}/>`;
-    s += `<text x="${x + bw * .28}" y="${h - 10}" text-anchor="middle">${esc(labels[i])}</text>`;
+/* Vertical bars with value labels; optional line on a second scale. rows: {label, value, strong, tip}; line: {values, fmt, label} */
+export function colBars(rows, { w = 720, h = 280, fmt = n0, line = null, aria = "Column chart", y0zero = true } = {}) {
+  const m = { l: 16, r: 16, t: 26, b: 30 };
+  const top = Math.max(...rows.map(r => r.value)) * 1.12, bw = (w - m.l - m.r) / rows.length;
+  const Y = v => m.t + (h - m.t - m.b) * (1 - v / top);
+  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(aria)}">` + gl(m.l, w - m.r, Y(0), true);
+  rows.forEach((r, i) => {
+    const x = m.l + i * bw + bw * .18;
+    s += `<rect x="${x}" y="${Y(r.value)}" width="${bw * .64}" height="${Y(0) - Y(r.value)}" rx="4" class="bar${r.strong ? " strong" : ""}" ${tip(r.tip || `${r.label}: ${fmt(r.value)}`)}/>`;
+    if (!line) s += `<text x="${x + bw * .32}" y="${Y(r.value) - 7}" text-anchor="middle" class="${r.strong ? "lbl-strong" : "lbl"}">${fmt(r.value)}</text>`;
+    s += `<text x="${x + bw * .32}" y="${h - 9}" text-anchor="middle">${esc(r.label)}</text>`;
   });
   if (line) {
-    const pts = line.map((v, i) => `${m.l + i * bw + bw / 2},${Y(v)}`).join(" ");
-    s += `<polyline points="${pts}" class="ln" style="stroke:var(--ink);stroke-width:1.6"/>`;
-    line.forEach((v, i) => { s += `<circle cx="${m.l + i * bw + bw / 2}" cy="${Y(v)}" r="${i === line.length - 1 ? 4.5 : 3}" style="fill:var(--ink)" ${tip(`Cumulative after ${labels[i]}: ${kfmt(Math.round(v))}`)}/>`; });
-    const last = line[line.length - 1];
-    s += `<text class="lbl-strong" x="${m.l + (line.length - 1) * bw + bw / 2}" y="${Y(last) + (last < 0 ? 18 : -10)}" text-anchor="middle">${kfmt(Math.round(last))}</text>`;
+    const lv = line.values, lt = Math.max(...lv) * 1.25, lb = Math.min(...lv) * .6;
+    const LY = v => m.t + 10 + (h - m.t - m.b - 40) * (1 - (v - lb) / (lt - lb));
+    const pts = lv.map((v, i) => `${m.l + i * bw + bw / 2},${LY(v)}`).join(" ");
+    s += `<polyline points="${pts}" class="ln" style="stroke:var(--s2)"/>`;
+    lv.forEach((v, i) => { s += `<circle cx="${m.l + i * bw + bw / 2}" cy="${LY(v)}" r="4" class="dot" style="fill:var(--s2)" ${tip(`${line.label}, ${rows[i].label}: ${line.fmt(v)}`)}/><text x="${m.l + i * bw + bw / 2}" y="${LY(v) - 10}" text-anchor="middle" class="lbl-strong" style="fill:var(--s2)">${line.fmt(v)}</text>`; });
+    rows.forEach((r, i) => { s += `<text x="${m.l + i * bw + bw / 2}" y="${Y(r.value) + 16}" text-anchor="middle" class="lbl-in">${fmt(r.value)}</text>`; });
   }
   return s + "</svg>";
 }
 
-export function tornadoChart(t, w = 680) {
-  const rowH = 34, m = { l: 236, r: 76, t: 22, b: 8 };
-  const h = m.t + m.b + rowH * t.bars.length;
-  const span = Math.max(...t.bars.flatMap(b => [Math.abs(b.low - t.baseNpv), Math.abs(b.high - t.baseNpv)])) * 1.05 || 1;
-  const X = v => m.l + (w - m.l - m.r) * ((v - t.baseNpv) / (2 * span) + .5);
-  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="What moves NPV">`;
-  s += `<text x="${X(t.baseNpv)}" y="12" text-anchor="middle" class="lbl-strong">Current NPV ${kfmt(Math.round(t.baseNpv))}</text>`;
-  t.bars.forEach((b, i) => {
-    const y = m.t + i * rowH + 6;
-    const lo = Math.min(b.low, b.high), hi = Math.max(b.low, b.high);
-    const loLab = b.low <= b.high ? b.lowLabel : b.highLabel, hiLab = b.low <= b.high ? b.highLabel : b.lowLabel;
-    s += `<text x="150" y="${y + 14}" text-anchor="end" class="lbl">${esc(b.label)}</text>`;
-    if (lo < t.baseNpv) s += `<rect x="${X(lo)}" y="${y}" width="${Math.max(1, X(Math.min(hi, t.baseNpv)) - X(lo))}" height="20" rx="4" style="fill:var(--c-neg)" ${tip(`${b.label} at ${loLab}: NPV ${kfmt(Math.round(lo))}`)}/>`;
-    if (hi > t.baseNpv) s += `<rect x="${X(Math.max(lo, t.baseNpv))}" y="${y}" width="${Math.max(1, X(hi) - X(Math.max(lo, t.baseNpv)))}" height="20" rx="4" style="fill:var(--c-pos)" ${tip(`${b.label} at ${hiLab}: NPV ${kfmt(Math.round(hi))}`)}/>`;
-    s += `<text x="${X(lo) - 5}" y="${y + 14}" text-anchor="end">${esc(loLab)}</text><text x="${X(hi) + 5}" y="${y + 14}">${esc(hiLab)}</text>`;
-  });
-  s += `<line x1="${X(t.baseNpv)}" x2="${X(t.baseNpv)}" y1="${m.t}" y2="${h - m.b}" class="ax0"/>`;
-  return s + "</svg>";
-}
-
-/* NPV heat grid: rows = capex, columns = contract lock years. Diverging: --pos above zero, --neg below. */
-export function lockCapexChart({ locks, capexes, grid: g }, cur, w = 680) {
-  const m = { l: 92, r: 10, t: 40, b: 8 }, cw = (w - m.l - m.r) / locks.length, ch = 36;
-  const h = m.t + m.b + ch * capexes.length;
-  const mx = Math.max(...g.flat().map(Math.abs)) || 1;
-  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="NPV by contract length and capex">`;
-  s += `<text x="${m.l}" y="12" class="lbl-strong">Years the year-1 rent is locked by contract →</text>`;
-  locks.forEach((L, j) => { s += `<text x="${m.l + j * cw + cw / 2}" y="30" text-anchor="middle">${L === 0 ? "none" : L + " yr"}</text>`; });
-  capexes.forEach((c, i) => {
-    s += `<text x="${m.l - 10}" y="${m.t + i * ch + 22}" text-anchor="end">$${c / 1000}k capex</text>`;
-    locks.forEach((L, j) => {
-      const v = g[i][j], a = .12 + .78 * Math.min(1, Math.abs(v) / mx);
-      const isCur = cur.lock === L && cur.capex === c;
-      s += `<rect x="${m.l + j * cw + 2}" y="${m.t + i * ch + 2}" width="${cw - 4}" height="${ch - 4}" rx="4" style="fill:var(${v >= 0 ? "--c-pos" : "--c-neg"});fill-opacity:${a.toFixed(2)}${isCur ? ";stroke:var(--ink);stroke-width:2" : ""}" ${tip(`$${c / 1000}k capex, ${L}-year lock: NPV ${kfmt(Math.round(v))}`)}/>`;
-      s += `<text x="${m.l + j * cw + cw / 2}" y="${m.t + i * ch + 22}" text-anchor="middle" class="${isCur ? "lbl-strong" : "lbl"}">${(v / 1000).toFixed(1)}k</text>`;
+/* Grouped vertical bars: groups [{label, values:[...]}], keys [{label, color}] */
+export function groupBars(groups, keys, { w = 720, h = 280, fmt = n0, aria = "Grouped bars" } = {}) {
+  const m = { l: 16, r: 16, t: 26, b: 30 };
+  const top = Math.max(...groups.flatMap(g => g.values)) * 1.15, gw = (w - m.l - m.r) / groups.length, bw = gw * .7 / keys.length;
+  const Y = v => m.t + (h - m.t - m.b) * (1 - Math.max(0, v) / top);
+  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(aria)}">` + gl(m.l, w - m.r, Y(0), true);
+  groups.forEach((g, i) => {
+    g.values.forEach((v, k) => {
+      const x = m.l + i * gw + gw * .15 + k * bw;
+      s += `<rect x="${x + 1}" y="${Y(v)}" width="${bw - 2}" height="${Math.max(1, Y(0) - Y(v))}" rx="3" style="fill:${keys[k].color}" ${tip(`${g.label}, ${keys[k].label}: ${fmt(v)}`)}/>`;
+      s += `<text x="${x + bw / 2}" y="${Y(v) - 6}" text-anchor="middle" class="lbl" style="font-size:10.5px">${fmt(v)}</text>`;
     });
+    s += `<text x="${m.l + i * gw + gw / 2}" y="${h - 9}" text-anchor="middle">${esc(g.label)}</text>`;
   });
   return s + "</svg>";
 }
 
-/* Small vertical bar chart (CoreWeave revenue). */
-export function colBars(rows, { w = 420, h = 200, fmt = v => v } = {}) {
-  const m = { l: 10, r: 10, t: 22, b: 26 }, bw = (w - m.l - m.r) / rows.length, top = Math.max(...rows.map(r => r.value)) * 1.08;
-  const Y = v => m.t + (h - m.t - m.b) * (1 - v / top);
-  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Revenue by period">`;
-  s += grid(m.l, w - m.r, Y(0), true);
-  rows.forEach((r, i) => {
-    const x = m.l + i * bw + bw * .2;
-    s += `<rect x="${x}" y="${Y(r.value)}" width="${bw * .6}" height="${Y(0) - Y(r.value)}" rx="4" class="bar${r.strong ? " strong" : ""}" ${tip(`${r.label}: ${fmt(r.value)}`)}/>`;
-    s += `<text x="${x + bw * .3}" y="${Y(r.value) - 6}" text-anchor="middle" class="lbl-strong">${fmt(r.value)}</text>`;
-    s += `<text x="${x + bw * .3}" y="${h - 8}" text-anchor="middle">${esc(r.label)}</text>`;
-  });
+/* Profit by prescriptions per day, with break-even and current markers */
+export function profitCurve({ cur, gpRx, fixed, days, w = 720, h = 280 }) {
+  const m = { l: 64, r: 20, t: 18, b: 36 }, xs = [60, 300];
+  const P = rx => rx * days * gpRx - fixed;
+  const lo = Math.min(P(xs[0]), P(xs[1])), hi = Math.max(P(xs[0]), P(xs[1]));
+  const tk = ticks(lo, hi); const y0 = tk[0], y1 = tk[tk.length - 1];
+  const X = rx => m.l + (w - m.l - m.r) * ((rx - xs[0]) / (xs[1] - xs[0])), Y = v => m.t + (h - m.t - m.b) * (1 - (v - y0) / (y1 - y0));
+  const k = v => (v < 0 ? "−$" : "$") + Math.abs(Math.round(v / 1000)).toLocaleString("en-US") + "k";
+  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Profit by prescriptions per day">`;
+  tk.forEach(t => { s += gl(m.l, w - m.r, Y(t), t === 0) + `<text x="${m.l - 8}" y="${Y(t) + 4}" text-anchor="end">${k(t)}</text>`; });
+  for (let rx = 60; rx <= 300; rx += 40) s += `<text x="${X(rx)}" y="${h - 16}" text-anchor="middle">${rx}</text>`;
+  s += `<text x="${(m.l + w - m.r) / 2}" y="${h - 2}" text-anchor="middle">Prescriptions per day</text>`;
+  s += `<line x1="${X(xs[0])}" y1="${Y(P(xs[0]))}" x2="${X(xs[1])}" y2="${Y(P(xs[1]))}" class="ln" style="stroke:var(--s1)"/>`;
+  const be = fixed / gpRx / days;
+  if (be > xs[0] && be < xs[1]) s += `<line x1="${X(be)}" x2="${X(be)}" y1="${m.t}" y2="${h - m.b}" class="ev"/><text x="${X(be) + 6}" y="${m.t + 12}" class="lbl-strong">Break-even ${Math.round(be)} a day</text>`;
+  if (cur >= xs[0] && cur <= xs[1]) s += `<circle cx="${X(cur)}" cy="${Y(P(cur))}" r="6" class="dot" style="fill:var(${P(cur) >= 0 ? "--c-pos" : "--c-neg"})" ${tip(`${cur} a day: profit ${k(P(cur))} a year`)}/><text x="${X(cur) + 10}" y="${Y(P(cur)) + 18}" class="lbl-strong">${cur} a day: ${k(P(cur))}</text>`;
   return s + "</svg>";
 }
 
