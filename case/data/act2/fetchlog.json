@@ -1,0 +1,193 @@
+{
+ "ran_at": "2026-10-20T07:06:22.453694Z",
+ "qcew_county": {
+  "rows": 1060
+ },
+ "svi": {
+  "rows": 365
+ },
+ "places": {
+  "release": "PLACES: Local Data for Better Health, County Data, 2025 release",
+  "id": "swc5-untb",
+  "rows": 1192
+ },
+ "oews": {
+  "rows": 18
+ },
+ "partd_states": {
+  "rows": 14
+ },
+ "census_probe": {
+  "first_400": "<html style=\"font-size: 14px;\">\n\n<head>\n    <title>Missing Key</title>\n    <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/styles.css\">\n    <script type=\"text/javascript\" src=\"assets/jquery-1.4.4.min.js\"></script>\n    <script type=\"text/javascript\">\n        $(document).ready(function () {\n            function getCookie(name) {\n      "
+ },
+ "requests": [
+  {
+   "url": "https://data.bls.gov/cew/data/api/2023/3/industry/456110.csv",
+   "status": 200,
+   "bytes": 587863,
+   "sha256": "b73bd833b1e09e73",
+   "s": 0.2
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2026/1/industry/456110.csv",
+   "status": 200,
+   "bytes": 505443,
+   "sha256": "ebcbd2aac88ec87b",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2025/4/industry/456110.csv",
+   "status": 200,
+   "bytes": 554174,
+   "sha256": "52fffaaa2272ad04",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.bls.gov/cew/data/api/2026/2/industry/456110.csv",
+   "status": 404,
+   "try": 1
+  },
+  {
+   "url": "https://svi.cdc.gov/Documents/Data/2022/csv/states_counties/SVI_2022_US_county.csv",
+   "status": 200,
+   "bytes": 2301480,
+   "sha256": "bc47d244153e359d",
+   "s": 0.1
+  },
+  {
+   "url": "https://api.us.socrata.com/api/catalog/v1?domains=data.cdc.gov&q=PLACES%20County%20Data&limit=50",
+   "status": 200,
+   "bytes": 912016,
+   "sha256": "9bf43bc9a855abe1",
+   "s": 5.0
+  },
+  {
+   "url": "https://data.cdc.gov/resource/swc5-untb.json?$where=stateabbr%20in%28%27PA%27%2C%27MD%27%2C%27NY%27%2C%27VA%27%2C%27NJ%27%2C%27DE%27%2C%27WV%27%29%20AND%20measureid%20in%28%27DIABETES%27%2C%27BPHIGH%27%2C%27DISABILITY%27%2C%27LACKTRPT%27%29%20AND%20datavaluetypeid%3D%27CrdPrv%27&$limit=50000",
+   "status": 200,
+   "bytes": 709633,
+   "sha256": "6bf0be83961c8352",
+   "s": 5.9
+  },
+  {
+   "url": "api.bls.gov v1",
+   "status": "REQUEST_SUCCEEDED",
+   "msg": [
+    "No Data Available for Series OEUN000000000000029105104 Year: 2023",
+    "No Data Available for Series OEUN000000000000029105104 Year: 2024",
+    "No Data Available for Series OEUN000000000000029105101 Year: 2023"
+   ]
+  },
+  {
+   "url": "https://data.cms.gov/data.json",
+   "status": 200,
+   "bytes": 17903889,
+   "sha256": "ad4cce080415dd98",
+   "s": 0.4
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/c8ea3f8e-3a09-4fea-86f2-8902fb4b0920/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=Pennsylvania&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1548695,
+   "sha256": "de3040a4789f9f4b",
+   "s": 0.6
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/c8ea3f8e-3a09-4fea-86f2-8902fb4b0920/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=Maryland&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1320406,
+   "sha256": "bf0b15003373e865",
+   "s": 0.6
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/c8ea3f8e-3a09-4fea-86f2-8902fb4b0920/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=New%20York&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1664729,
+   "sha256": "ece808d77ab56e02",
+   "s": 0.6
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/c8ea3f8e-3a09-4fea-86f2-8902fb4b0920/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=Virginia&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1336745,
+   "sha256": "ef32fd5436c18313",
+   "s": 0.9
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/c8ea3f8e-3a09-4fea-86f2-8902fb4b0920/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=New%20Jersey&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1474095,
+   "sha256": "f4e1921b9e2e79b3",
+   "s": 0.6
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/c8ea3f8e-3a09-4fea-86f2-8902fb4b0920/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=Delaware&size=5000&offset=0",
+   "status": 200,
+   "bytes": 913133,
+   "sha256": "91487b9090606a0b",
+   "s": 0.5
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/c8ea3f8e-3a09-4fea-86f2-8902fb4b0920/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=West%20Virginia&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1071747,
+   "sha256": "f1aede9e43f1fe5c",
+   "s": 0.5
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/9b4c142c-69cc-4a96-a09a-7cf2ba7f5816/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=Pennsylvania&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1548695,
+   "sha256": "de3040a4789f9f4b",
+   "s": 0.6
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/9b4c142c-69cc-4a96-a09a-7cf2ba7f5816/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=Maryland&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1320406,
+   "sha256": "bf0b15003373e865",
+   "s": 0.5
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/9b4c142c-69cc-4a96-a09a-7cf2ba7f5816/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=New%20York&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1664729,
+   "sha256": "ece808d77ab56e02",
+   "s": 0.6
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/9b4c142c-69cc-4a96-a09a-7cf2ba7f5816/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=Virginia&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1336745,
+   "sha256": "ef32fd5436c18313",
+   "s": 0.5
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/9b4c142c-69cc-4a96-a09a-7cf2ba7f5816/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=New%20Jersey&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1474095,
+   "sha256": "f4e1921b9e2e79b3",
+   "s": 0.6
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/9b4c142c-69cc-4a96-a09a-7cf2ba7f5816/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=Delaware&size=5000&offset=0",
+   "status": 200,
+   "bytes": 913133,
+   "sha256": "91487b9090606a0b",
+   "s": 0.6
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/9b4c142c-69cc-4a96-a09a-7cf2ba7f5816/data?filter[Prscrbr_Geo_Lvl]=State&filter[Prscrbr_Geo_Desc]=West%20Virginia&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1071747,
+   "sha256": "f1aede9e43f1fe5c",
+   "s": 0.5
+  },
+  {
+   "url": "https://api.census.gov/data/2023/acs/acs5?get=NAME,B01003_001E&for=county:*&in=state:10",
+   "status": 200,
+   "bytes": 8531,
+   "sha256": "c2f4687e09b80676",
+   "s": 0.1
+  }
+ ]
+}
