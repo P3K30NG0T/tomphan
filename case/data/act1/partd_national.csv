@@ -1,2 +1,14 @@
 period,rows,claims,fills_30day,drug_cost_usd,api
-"[{'@type': 'PeriodOfTime', 'startDate': '2013-01-01', 'endDate': '2013-12-31'}]",3447,1368963817,1906417744,103669474273,https://data.cms.gov/data-api/v1/dataset/9aec2a70-4ef2-438a-bc35-1747fe2492c9/data
+" '2013-01-01', 'endDate': '2013-12-31'}]",3447,1368963817,1906417744,103669474273,https://data.cms.gov/data-api/v1/dataset/9aec2a70-4ef2-438a-bc35-1747fe2492c9/data
+" '2014-01-01', 'endDate': '2014-12-31'}]",3362,1415059797,2021825678,121437445163,https://data.cms.gov/data-api/v1/dataset/63099eb4-6c9e-4fec-8c9e-b6b132f1b7f4/data
+" '2015-01-01', 'endDate': '2015-12-31'}]",3395,1448156479,2116606771,137346179154,https://data.cms.gov/data-api/v1/dataset/73748d0b-2acb-420a-ac66-27d8e238fdc8/data
+" '2016-01-01', 'endDate': '2016-12-31'}]",3393,1482050210,2226851870,146129218304,https://data.cms.gov/data-api/v1/dataset/c5b3c840-5eb2-4e4c-ac35-c30995dcb051/data
+" '2017-01-01', 'endDate': '2017-12-31'}]",3425,1495393915,2324373957,154794697579,https://data.cms.gov/data-api/v1/dataset/7863e41c-3f6f-4889-93a8-be65e9f3d073/data
+" '2018-01-01', 'endDate': '2018-12-31'}]",3481,1500615588,2429696956,168105386482,https://data.cms.gov/data-api/v1/dataset/b083c9b6-b841-4676-8d0a-fb03ee1431a1/data
+" '2019-01-01', 'endDate': '2019-12-31'}]",3544,1503132498,2534094060,183156253203,https://data.cms.gov/data-api/v1/dataset/73a6335e-f16f-4c81-a84b-6b5a986e2bf8/data
+" '2020-01-01', 'endDate': '2020-12-31'}]",3582,1497338321,2634482413,198626037406,https://data.cms.gov/data-api/v1/dataset/83891e77-99cf-4865-b60a-97703b916e09/data
+" '2021-01-01', 'endDate': '2021-12-31'}]",3567,1500037987,2699857883,215648089622,https://data.cms.gov/data-api/v1/dataset/7dda2a9d-034a-446a-b4b3-e1254e0127b2/data
+" '2022-01-01', 'endDate': '2022-12-31'}]",3584,1543886604,2806573009,240365883169,https://data.cms.gov/data-api/v1/dataset/1fc57194-a51d-4864-aee6-de0889488151/data
+" '2023-01-01', 'endDate': '2023-12-31'}]",3607,1616932462,2949249174,275803243232,https://data.cms.gov/data-api/v1/dataset/3463648b-1971-478d-84ca-80cadc758153/data
+" '2024-01-01', 'endDate': '2024-12-31'}]",3632,1711071471,3141299307,288569675757,https://data.cms.gov/data-api/v1/dataset/c8ea3f8e-3a09-4fea-86f2-8902fb4b0920/data
+" '2024-01-01', 'endDate': '2024-12-31'}]",3632,1711071471,3141299307,288569675757,https://data.cms.gov/data-api/v1/dataset/9b4c142c-69cc-4a96-a09a-7cf2ba7f5816/data

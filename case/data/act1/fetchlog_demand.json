@@ -1,5 +1,5 @@
 {
- "ran_at": "2026-10-20T06:30:16.916663Z",
+ "ran_at": "2026-10-20T06:30:45.963667Z",
  "partd": {
   "catalog_titles_with_part_d": [
    "Medicare Quarterly Part D Spending by Drug : 2026-01-01",
@@ -44,15 +44,34 @@
    "Medicare Part D Prescribers - by Geography and Drug : 2013-12-31"
   ],
   "years": [
-   [
-    {
-     "@type": "PeriodOfTime",
-     "startDate": "2013-01-01",
-     "endDate": "2013-12-31"
-    }
-   ]
+   " '2013-01-01', 'endDate': '2013-12-31'}]",
+   " '2014-01-01', 'endDate': '2014-12-31'}]",
+   " '2015-01-01', 'endDate': '2015-12-31'}]",
+   " '2016-01-01', 'endDate': '2016-12-31'}]",
+   " '2017-01-01', 'endDate': '2017-12-31'}]",
+   " '2018-01-01', 'endDate': '2018-12-31'}]",
+   " '2019-01-01', 'endDate': '2019-12-31'}]",
+   " '2020-01-01', 'endDate': '2020-12-31'}]",
+   " '2021-01-01', 'endDate': '2021-12-31'}]",
+   " '2022-01-01', 'endDate': '2022-12-31'}]",
+   " '2023-01-01', 'endDate': '2023-12-31'}]",
+   " '2024-01-01', 'endDate': '2024-12-31'}]",
+   " '2024-01-01', 'endDate': '2024-12-31'}]"
   ],
-  "dataset_title": "Medicare Part D Prescribers - by Geography and Drug : 2013-12-31"
+  "dataset_titles": [
+   "Medicare Part D Prescribers - by Geography and Drug : 2013-12-31",
+   "Medicare Part D Prescribers - by Geography and Drug : 2014-12-31",
+   "Medicare Part D Prescribers - by Geography and Drug : 2015-12-31",
+   "Medicare Part D Prescribers - by Geography and Drug : 2016-12-31",
+   "Medicare Part D Prescribers - by Geography and Drug : 2017-12-31",
+   "Medicare Part D Prescribers - by Geography and Drug : 2018-12-31",
+   "Medicare Part D Prescribers - by Geography and Drug : 2019-12-31",
+   "Medicare Part D Prescribers - by Geography and Drug : 2020-12-31",
+   "Medicare Part D Prescribers - by Geography and Drug : 2021-12-31",
+   "Medicare Part D Prescribers - by Geography and Drug : 2022-12-30",
+   "Medicare Part D Prescribers - by Geography and Drug : 2023-12-31",
+   "Medicare Part D Prescribers - by Geography and Drug : 2024-12-01"
+  ]
  },
  "census_probe": {
   "first_300": "<html style=\"font-size: 14px;\">\n\n<head>\n    <title>Missing Key</title>\n    <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/styles.css\">\n    <script type=\"text/javascript\" src=\"assets/jquery-1.4.4.min.js\"></script>\n    <script type=\"tex"
@@ -63,14 +82,98 @@
    "status": 200,
    "bytes": 17903889,
    "sha256": "ad4cce080415dd98",
-   "s": 0.6
+   "s": 0.7
   },
   {
    "url": "https://data.cms.gov/data-api/v1/dataset/9aec2a70-4ef2-438a-bc35-1747fe2492c9/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
    "status": 200,
    "bytes": 1958809,
    "sha256": "5139346c75ad5571",
+   "s": 0.3
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/63099eb4-6c9e-4fec-8c9e-b6b132f1b7f4/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1912088,
+   "sha256": "3843daad0132e7c3",
+   "s": 0.9
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/73748d0b-2acb-420a-ac66-27d8e238fdc8/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1930869,
+   "sha256": "71f13174bcf773b5",
+   "s": 0.7
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/c5b3c840-5eb2-4e4c-ac35-c30995dcb051/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1931865,
+   "sha256": "c9f5d382f3a592a0",
+   "s": 0.9
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/7863e41c-3f6f-4889-93a8-be65e9f3d073/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1950113,
+   "sha256": "20472c9ae13365af",
    "s": 0.2
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/b083c9b6-b841-4676-8d0a-fb03ee1431a1/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 1983034,
+   "sha256": "d69e0c4b4a4b319c",
+   "s": 0.1
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/73a6335e-f16f-4c81-a84b-6b5a986e2bf8/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 2018013,
+   "sha256": "c757672a3b026639",
+   "s": 0.8
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/83891e77-99cf-4865-b60a-97703b916e09/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 2039279,
+   "sha256": "4f987e8b49e0c20d",
+   "s": 0.9
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/7dda2a9d-034a-446a-b4b3-e1254e0127b2/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 2030036,
+   "sha256": "757d0c1d87b8da44",
+   "s": 0.3
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/1fc57194-a51d-4864-aee6-de0889488151/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 2041100,
+   "sha256": "e27af63f218810b5",
+   "s": 0.3
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/3463648b-1971-478d-84ca-80cadc758153/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 2053097,
+   "sha256": "781f826ae16eee67",
+   "s": 0.4
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/c8ea3f8e-3a09-4fea-86f2-8902fb4b0920/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 2066826,
+   "sha256": "876e5bcabbd4f068",
+   "s": 0.3
+  },
+  {
+   "url": "https://data.cms.gov/data-api/v1/dataset/9b4c142c-69cc-4a96-a09a-7cf2ba7f5816/data?filter[Prscrbr_Geo_Lvl]=National&size=5000&offset=0",
+   "status": 200,
+   "bytes": 2066826,
+   "sha256": "876e5bcabbd4f068",
+   "s": 0.3
   },
   {
    "url": "https://api.census.gov/data/2022/cbp?get=ESTAB&for=us:*&NAICS2017=446110",
