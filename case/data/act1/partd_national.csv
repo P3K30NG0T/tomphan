@@ -1,0 +1,2 @@
+period,rows,claims,fills_30day,drug_cost_usd,api
+"[{'@type': 'PeriodOfTime', 'startDate': '2013-01-01', 'endDate': '2013-12-31'}]",3447,1368963817,1906417744,103669474273,https://data.cms.gov/data-api/v1/dataset/9aec2a70-4ef2-438a-bc35-1747fe2492c9/data
