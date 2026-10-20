@@ -1,0 +1,31 @@
+name: Case data fetch
+# Downloads open data for the pharmacy case, one act at a time, and commits it to case/data/.
+on:
+  workflow_dispatch:
+    inputs:
+      act:
+        description: "Which act's fetch script to run (file name in case/fetch/ without .py)"
+        default: "act1"
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch
+        run: python case/fetch/${{ inputs.act }}.py
+      - name: Commit data
+        if: always()
+        run: |
+          git config user.name "tomphan-harness[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add case/data/
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "case: ${{ inputs.act }} data (run ${{ github.run_id }})"
+          git pull --rebase origin main
+          git push origin HEAD:main
