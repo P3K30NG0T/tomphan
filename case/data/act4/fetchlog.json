@@ -1,0 +1,363 @@
+{
+ "ran_at": "2026-10-20T07:17:19.711581Z",
+ "npi": {
+  "rows": 131,
+  "pharmacy_rows": 131,
+  "geocoded": 108
+ },
+ "requests": [
+  {
+   "url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=WEIS+MARKETS%2A&enumeration_type=NPI-2&limit=200&skip=0",
+   "status": 200,
+   "bytes": 227789,
+   "sha256": "4616409c4292510a",
+   "s": 0.1
+  },
+  {
+   "url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=WEIS+MARKETS+INC%2A&enumeration_type=NPI-2&limit=200&skip=0",
+   "status": 200,
+   "bytes": 202660,
+   "sha256": "0a1836a8e817cfe0",
+   "s": 0.0
+  },
+  {
+   "url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=WEIS+PHARMACY%2A&enumeration_type=NPI-2&limit=200&skip=0",
+   "status": 200,
+   "bytes": 224858,
+   "sha256": "3d30f613472efebe",
+   "s": 0.0
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=ROUTE+209+AND+E+WEIR+LAKE+RD&city=BRODHEADSVILLE&state=PA&zip=18322&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1197,
+   "sha256": "31a9f9a8654dac99",
+   "s": 0.2
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1309+BLUE+VALLEY+DR&city=PEN+ARGYL&state=PA&zip=18072&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1208,
+   "sha256": "e7d051e5ab25f7f8",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=721+HANOVER+PIKE&city=HAMPSTEAD&state=MD&zip=21074&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1190,
+   "sha256": "f2e84edb3516eb7f",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=2400+E+MARKET+ST&city=YORK&state=PA&zip=17402&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1168,
+   "sha256": "2ac14047890cbcd7",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1629+S+MARKET+ST&city=ELIZABETHTOWN&state=PA&zip=17022&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1208,
+   "sha256": "ea11ef5c60d05a79",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1800+ROOSEVELT+AVE&city=YORK&state=PA&zip=17404&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1176,
+   "sha256": "c24bbaa0c9f9ec98",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1102+N+QUEEN+ST&city=MARTINSBURG&state=WV&zip=25401&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1193,
+   "sha256": "26c6762056419db3",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=10122+OLD+NATIONAL+PIKE&city=IJAMSVILLE&state=MD&zip=21754&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1220,
+   "sha256": "f5a26a329fad8653",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=121+WATER+ST&city=NEWTON&state=NJ&zip=07860&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1166,
+   "sha256": "965feb22480d0716",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=70+PHOENIX+ST&city=DURYEA&state=PA&zip=18642&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 394,
+   "sha256": "f4f24ffd55ecaf15",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=2525+MEMORIAL+HWY&city=DALLAS&state=PA&zip=18612&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1183,
+   "sha256": "41a4e4bb234bf054",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=7801+GLENLIVET+WEST+DRIVE&city=FOGELSVILLE&state=PA&zip=18051&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1205,
+   "sha256": "08eaa26044689d37",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=100+RANO+BLVD&city=VESTAL&state=NY&zip=13850&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1169,
+   "sha256": "44d51de553e23bbc",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=725+COLUMBIA+BLVD&city=BLOOMSBURG&state=PA&zip=17815&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1199,
+   "sha256": "6b37f8ef15e9a066",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1424+BALTIMORE+ST&city=HANOVER&state=PA&zip=17331&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1181,
+   "sha256": "da72e67e7c18a9aa",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=31+EASTERN+BLVD+N&city=HAGERSTOWN&state=MD&zip=21740&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1199,
+   "sha256": "e1985c5823a90e36",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1651+E+CUMBERLAND+ST&city=LEBANON&state=PA&zip=17042&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1194,
+   "sha256": "a212bf8776f7055c",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=4521+WILLIAM+PENN+HWY&city=MIFFLINTOWN&state=PA&zip=17059&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1210,
+   "sha256": "c4c2a92279912e73",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=500+POTTSVILLE+PARK+PLZ&city=POTTSVILLE&state=PA&zip=17901&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1220,
+   "sha256": "ee2b7528a20fe379",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1075+W+KING+ST&city=SHIPPENSBURG&state=PA&zip=17257&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1194,
+   "sha256": "aaadbbb258bbcbff",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=217+OAK+LEE+DR&city=RANSON&state=WV&zip=25438&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1177,
+   "sha256": "9c22314a8aca4e80",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=5020+ROUTE+873&city=SCHNECKSVILLE&state=PA&zip=18078&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1202,
+   "sha256": "8520ddde00ff4093",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1204+MILLERSVILLE+PIKE&city=LANCASTER&state=PA&zip=17603&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1214,
+   "sha256": "163f5572e2bb215a",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=3825+SULLIVAN+TRL&city=EASTON&state=PA&zip=18040&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1193,
+   "sha256": "0bf20d739507d564",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=901+E+MAIN+ST&city=PALMYRA&state=PA&zip=17078&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1170,
+   "sha256": "0d2b17b5f159e14f",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1000+S+2ND+ST&city=SUNBURY&state=PA&zip=17801&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1188,
+   "sha256": "f3af1a674732a52f",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=2850+CARLISLE+RD&city=DOVER&state=PA&zip=17315&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1172,
+   "sha256": "7d2b89cc9c2c47b3",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=160+ROBINSON+ST&city=BINGHAMTON&state=NY&zip=13904&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1188,
+   "sha256": "d2e7d912f43021b1",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=740+S+BROAD+ST&city=LITITZ&state=PA&zip=17543&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1180,
+   "sha256": "ddef762fb6a161d0",
+   "s": 0.3
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=365+S+CEDAR+CREST+BLVD&city=ALLENTOWN&state=PA&zip=18103&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 406,
+   "sha256": "5d55a833047affd3",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=3440+GRANDVIEW+DR.&city=MACUNGIE&state=PA&zip=18062&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1189,
+   "sha256": "b03b204cdd378497",
+   "s": 0.2
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=801+N+LOYALSOCK+AVE&city=MONTOURSVILLE&state=PA&zip=17754&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1211,
+   "sha256": "830a114e347e0037",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=331+N+READING+RD&city=EPHRATA&state=PA&zip=17522&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1188,
+   "sha256": "e3866a2a5aa5d122",
+   "s": 0.3
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1500+N+CEDAR+CREST+BLVD&city=ALLENTOWN&state=PA&zip=18104&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1207,
+   "sha256": "e473100f4687c843",
+   "s": 0.2
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1220+CHESTNUT+ST&city=EMMAUS&state=PA&zip=18049&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1178,
+   "sha256": "e62fd5a829859b88",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=2065+SPRINGWOOD+RD&city=YORK&state=PA&zip=17403&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1176,
+   "sha256": "210724f9b0261d16",
+   "s": 0.2
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=5360+LINCOLN+HWY&city=GAP&state=PA&zip=17527&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1179,
+   "sha256": "fb2ef58c63985b89",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=553+MAHONING+ST+%23+555&city=MILTON&state=PA&zip=17847&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1199,
+   "sha256": "b2e4c9c7945181a9",
+   "s": 0.3
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1700+FRUITVILLE+PIKE+STE+A&city=LANCASTER&state=PA&zip=17601&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1214,
+   "sha256": "1e6f36287146ad76",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=550+W+MACPHAIL+RD&city=BEL+AIR&state=MD&zip=21014&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1187,
+   "sha256": "8d2cbb663b7f9b9a",
+   "s": 0.3
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=10825+BIRMINGHAM+WAY&city=WOODSTOCK&state=MD&zip=21163&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1201,
+   "sha256": "1b185ac3e8f91456",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1100+N+4TH+ST&city=SUNBURY&state=PA&zip=17801&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1190,
+   "sha256": "060821febc49e46e",
+   "s": 0.3
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=6901+WESTBRANCH+HWY&city=LEWISBURG&state=PA&zip=17837&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1195,
+   "sha256": "c55451baf43ea291",
+   "s": 0.2
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1+WEIS+PLZ&city=NANTICOKE&state=PA&zip=18634&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 394,
+   "sha256": "47545e019dd5e658",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=1272+E+PENN+ST&city=MUNCY&state=PA&zip=17756&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1172,
+   "sha256": "29df5daef9026baa",
+   "s": 0.3
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=12817+SHANK+FARM+LN&city=HAGERSTOWN&state=MD&zip=21742&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1212,
+   "sha256": "139fef954517a49d",
+   "s": 0.1
+  },
+  {
+   "url": "https://geocoding.geo.census.gov/geocoder/geographies/address?street=630+BALTIMORE+BLVD&city=WESTMINSTER&state=MD&zip=21157&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+   "status": 200,
+   "bytes": 1201,
+   "sha256": "214424d07bf5e05f",
+   "s": 0.1
+  },
+  {
+   "note": "134 requests in total"
+  }
+ ]
+}
